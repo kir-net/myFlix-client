@@ -1,6 +1,6 @@
 import React from 'react';
 
-/*MovieView: display details about a selected movie once its movie card is clicked*/
+/*MovieView: display details about a movie clicked by user*/
 export class MovieView extends React.Component {
 
     render() {
@@ -21,6 +21,16 @@ export class MovieView extends React.Component {
             <div className="movie-description">
                 <span className="label">Description: </span>
                 <span className="value">{movieProps.Description}</span>
+            </div>
+
+            <div className="movie-director">
+                <span className="label">Directed by: </span>
+                <span className="value">{movieProps.Director.Name}</span>
+            </div>
+
+            <div className="movie-actors">
+                <span className="label">Starring: </span>
+                <span className="value">{movieProps.Actors.join(', ')}</span>
             </div>
 
             <button onClick={() => { onBackClick(null); }}>Back</button>

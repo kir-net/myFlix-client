@@ -1,10 +1,9 @@
 import React    from 'react';
 import ReactDOM from 'react-dom';
 // import {MainView} from './components/main-view/main-view';
-// here without curly braces because "default" keyword is used for exporting
+// here without curly braces because in main-view.jsx, "default" keyword is used for exporting
 import MainView from './components/main-view/main-view';
 
-// Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
 
 // Main component (will eventually use all the others)

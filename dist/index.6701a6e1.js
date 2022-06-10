@@ -946,10 +946,9 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
 // import {MainView} from './components/main-view/main-view';
-// here without curly braces because "default" keyword is used for exporting
+// here without curly braces because in main-view.jsx, "default" keyword is used for exporting
 var _mainView = require("./components/main-view/main-view");
 var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
-// Import statement to indicate that you need to bundle `./index.scss`
 var _indexScss = require("./index.scss");
 // Main component (will eventually use all the others)
 class MyFlixApplication extends _reactDefault.default.Component {
@@ -957,7 +956,7 @@ class MyFlixApplication extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsx(_mainViewDefault.default, {
             __source: {
                 fileName: "src/index.jsx",
-                lineNumber: 14
+                lineNumber: 13
             },
             __self: this
         }));
@@ -25333,25 +25332,52 @@ var _movieView = require("../movie-view/movie-view");
 class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
+        // create some hard-coded app content for now
         this.state = {
             movies: [
                 {
                     _id: 1,
                     Title: "Three Billboards Outside Ebbing, Missouri",
-                    Description: "Three Billboards Outside Ebbing, Missouri is a 2017 crime drama film written, co-produced, and directed by Martin McDonagh and starring Frances McDormand as a Missouri woman who rents three roadside billboards to call attention to her daughter's unsolved rape and murder. ('Three Billboards Outside Ebbing, Missouri,' Wikipedia, The Free Encyclopedia)",
-                    ImagePath: "https://upload.wikimedia.org/wikipedia/en/c/c7/Three_Billboards_Outside_Ebbing%2C_Missouri_poster.png"
+                    Description: "Three Billboards Outside Ebbing, Missouri is a 2017 crime drama film starring Frances McDormand as a Missouri woman who rents three roadside billboards to call attention to her daughter's unsolved rape and murder. ('Three Billboards Outside Ebbing, Missouri,' Wikipedia, The Free Encyclopedia)",
+                    ImagePath: "https://upload.wikimedia.org/wikipedia/en/c/c7/Three_Billboards_Outside_Ebbing%2C_Missouri_poster.png",
+                    Director: {
+                        Name: "Martin McDonagh"
+                    },
+                    Actors: [
+                        "Frances McDormand",
+                        "Woody Harrelson",
+                        "Sam Rockwell"
+                    ]
                 },
                 {
                     _id: 2,
                     Title: "I'm Not There",
-                    Description: "I'm Not There is a 2007 musical drama film directed by Todd Haynes, and co-written by Haynes and Oren Moverman. It is an unconventional biographical film inspired by the life and music of American singer-songwriter Bob Dylan.('I'm not there,'  Wikipedia, The Free Encyclopedia)",
-                    ImagePath: "https://upload.wikimedia.org/wikipedia/en/e/ec/I%27m_Not_There.jpg"
+                    Description: "I'm Not There is a 2007 musical drama film. It is an unconventional biographical film inspired by the life and music of American singer-songwriter Bob Dylan.('I'm not there,'  Wikipedia, The Free Encyclopedia)",
+                    ImagePath: "https://upload.wikimedia.org/wikipedia/en/e/ec/I%27m_Not_There.jpg",
+                    Director: {
+                        Name: "Todd Haynes"
+                    },
+                    Actors: [
+                        "Christian Bale",
+                        "Cate Blanchett",
+                        "Heath Ledger",
+                        "Ben Whishaw",
+                        "Richard Gere"
+                    ]
                 },
                 {
                     _id: 3,
                     Title: "Local Hero",
-                    Description: "Local Hero is a 1983 Scottish comedy-drama film written and directed by Bill Forsyth and starring Peter Riegert, Denis Lawson, Fulton Mackay and Burt Lancaster. Produced by David Puttnam, the film is about an American oil company representative who is sent to the fictional village of Ferness on the west coast of Scotland to purchase the town and surrounding property for his company. ('Local Hero (film),'  Wikipedia, The Free Encyclopedia)",
-                    ImagePath: "https://upload.wikimedia.org/wikipedia/en/6/6a/Local_Hero_Poster.jpg"
+                    Description: "Local Hero is a 1983 Scottish comedy-drama film. Produced by David Puttnam, the film is about an American oil company representative who is sent to the fictional village of Ferness on the west coast of Scotland to purchase the town and surrounding property for his company. ('Local Hero (film),'  Wikipedia, The Free Encyclopedia)",
+                    ImagePath: "https://upload.wikimedia.org/wikipedia/en/6/6a/Local_Hero_Poster.jpg",
+                    Director: {
+                        Name: "Bill Forsyth"
+                    },
+                    Actors: [
+                        "Burt Lancaster",
+                        "Peter Rieger",
+                        "Fulton Mackay"
+                    ]
                 }
             ],
             // initial value is null (no movie card clicked yet)
@@ -25369,7 +25395,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 44
+                lineNumber: 50
             },
             __self: this,
             children: "The list is empty!"
@@ -25378,7 +25404,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 46
+                lineNumber: 52
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -25388,7 +25414,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 48
+                    lineNumber: 55
                 },
                 __self: this
             }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -25398,7 +25424,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 53
+                        lineNumber: 61
                     },
                     __self: this
                 }, movie._id)
@@ -25459,7 +25485,7 @@ $parcel$ReactRefreshHelpers$3741.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-/*MovieView: display details about a selected movie once its movie card is clicked*/ parcelHelpers.export(exports, "MovieView", ()=>MovieView
+/*MovieView: display details about a movie clicked by user*/ parcelHelpers.export(exports, "MovieView", ()=>MovieView
 );
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
@@ -25548,13 +25574,69 @@ class MovieView extends _reactDefault.default.Component {
                         })
                     ]
                 }),
+                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "movie-director",
+                    __source: {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 26
+                    },
+                    __self: this,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "label",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 27
+                            },
+                            __self: this,
+                            children: "Directed by: "
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "value",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 28
+                            },
+                            __self: this,
+                            children: movieProps.Director.Name
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "movie-actors",
+                    __source: {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 31
+                    },
+                    __self: this,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "label",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 32
+                            },
+                            __self: this,
+                            children: "Starring: "
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                            className: "value",
+                            __source: {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 33
+                            },
+                            __self: this,
+                            children: movieProps.Actors.join(', ')
+                        })
+                    ]
+                }),
                 /*#__PURE__*/ _jsxRuntime.jsx("button", {
                     onClick: ()=>{
                         onBackClick(null);
                     },
                     __source: {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 26
+                        lineNumber: 36
                     },
                     __self: this,
                     children: "Back"
