@@ -3,13 +3,18 @@
 **myFlix client** is the work-in-progress client-side for an application called myFlix based on its existing server-side code (REST API and database)
 
 
+## Current functionality
+
+- display MovieCard view as an example list of movies
+- on clicking one of the list items, display its MovieView with some detailed information
+- return to MovieCard view by clicking "Back" button
+
 
 ## Usage
 
-1. To test current functionality:
+To test current functionality:
 - enter parcel src/index.html to start server, then
 - enter http://localhost:1234/ in browser
-
 
 
 ## Built with:
