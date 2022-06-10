@@ -5,9 +5,9 @@
 
 ## Current functionality
 
-- display MovieCard view as an example list of movies
+- displays MainView with MovieCards as an example list of movies
 - on clicking one of the list items, display its MovieView with some detailed information
-- return to MovieCard view by clicking "Back" button
+- return to MainView by clicking "Back" button
 
 
 ## Usage
