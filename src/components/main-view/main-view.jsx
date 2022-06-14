@@ -9,20 +9,20 @@ class MainView extends React.Component {
 
     constructor(){
         super();
+        // initial state
         this.state = { 
             movies: [],
             // initial value is null (no movie card clicked yet)
-            selectedMovie: null
+            selectedMovie: null,
         };
     }
 
 
     componentDidMount(){
-        axios.get('https://flix-db-823.herokuapp.com/movies')
+        axios
+        .get('https://flix-db-823.herokuapp.com/movies')
         .then(response => {
-            this.setState({
-            movies: response.data
-            });
+            this.setState({movies: response.data});
         })
         .catch(error => {
             console.log(error);
@@ -43,16 +43,17 @@ class MainView extends React.Component {
                 {selectedMovie
                     // if user clicked a movie, show its movie view
                     ?   <MovieView 
-                            movie={selectedMovie} 
+                            movieProps={selectedMovie} 
                             onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}
                         />
                     // else, show all movie cards
                     :   movies.map(movie => (
                             <MovieCard 
                                 key={movie._id} 
-                                movie={movie} 
+                                movieProps={movie} 
+                                // new ex 3.4:
                                 onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}
-                                // prevously:
+                                // previously:
                                 // onMovieClick={(movie) => { this.setSelectedMovie(movie) }}
                             />
                     ))

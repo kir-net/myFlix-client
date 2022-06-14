@@ -3,6 +3,7 @@ import React from 'react';
 /*MovieView: display details about a movie clicked by user*/
 export class MovieView extends React.Component {
 
+    
     render() {
         const { movieProps, onBackClick } = this.props;
 
@@ -12,7 +13,7 @@ export class MovieView extends React.Component {
             <div className="movie-poster">
                 <img src={movieProps.ImagePath} alt='poster' />
             </div>
-
+           
             <div className="movie-title">
                 <span className="label">Title: </span>
                 <span className="value">{movieProps.Title}</span>
@@ -32,11 +33,12 @@ export class MovieView extends React.Component {
                 <span className="label">Starring: </span>
                 <span className="value">{movieProps.Actors.join(', ')}</span>
             </div>
-
+                       
             <button onClick={() => { onBackClick(null); }}>Back</button>
             
         </div>
         );
     }
+
 
 }
