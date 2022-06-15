@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /*MovieView: display details about a movie clicked by user*/
 export class MovieView extends React.Component {
@@ -39,6 +40,26 @@ export class MovieView extends React.Component {
         </div>
         );
     }
-
-
 }
+
+/*  -- specify how MovieView's props should look: -- */
+MovieCard.propTypes = {
+    movieProps:  PropTypes.shape({
+                Title:              PropTypes.string.isRequired,
+                Description:        PropTypes.string.isRequired,
+                Genre: PropTypes.shape({
+                    Name:           PropTypes.string.isRequired,
+                    Description:    PropTypes.string.isRequired
+                }).isRequired,
+                Director: PropTypes.shape({
+                    Name:           PropTypes.string.isRequired,
+                    Bio:            PropTypes.string.isRequired, 
+                    Birth:          PropTypes.string.isRequired,
+                    Death:          PropTypes.string
+                }).isRequired,
+                Actors:             PropTypes.arrayOf(PropTypes.string).isRequired,
+                ImagePath:          PropTypes.string.isRequired,
+                Featured:           PropTypes.bool.isRequired
+            }).isRequired,
+    onBackClick: PropTypes.func.isRequired
+};
