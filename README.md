@@ -5,9 +5,10 @@
 
 ## Current functionality
 
+- requests fake login data
 - displays MainView with MovieCards as an example list of movies
 - on clicking one of the list items, display its MovieView with some detailed information
-- return to MainView by clicking "Back" button
+- returns to MainView on clicking "Back" button
 
 
 ## Usage
