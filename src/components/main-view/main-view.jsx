@@ -1,8 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+
+import './main-view.scss';
 
 
 class MainView extends React.Component {
@@ -34,6 +38,14 @@ class MainView extends React.Component {
                     ImagePath: "https://upload.wikimedia.org/wikipedia/en/6/6a/Local_Hero_Poster.jpg",
                     Director:{Name:"Bill Forsyth"},
                     Actors:["Burt Lancaster","Peter Rieger","Fulton Mackay"]
+                },
+                { 
+                    _id: 4, 
+                    Title: "In Bruges", 
+                    Description: "In Bruges is a 2008 black comedy-drama crime thriller film directed and written by Martin McDonagh in his feature-length debut. The film stars Colin Farrell and Brendan Gleeson as two London-based Irish hitmen in hiding, with Ralph Fiennes as their enraged boss. The film is set and was filmed in Bruges, Belgium. ('In Bruges,'  Wikipedia, The Free Encyclopedia)", 
+                    ImagePath: "https://upload.wikimedia.org/wikipedia/en/e/ee/In_Bruges_poster.png",
+                    Director:{Name:"Martin McDonagh"},
+                    Actors:["Colin Farrell","Brendan Gleeson"]
                 }
             ],
             // initial value is null (no movie card clicked yet)
@@ -51,23 +63,31 @@ class MainView extends React.Component {
         const { movies, selectedMovie } = this.state;     
         if (movies.length === 0) return <div className="main-view">The list is empty!</div>;  
         return (
-            <div className="main-view">
+            <Row className="main-view   justify-content-md-center">
                 {selectedMovie
                     // if user clicked a movie, show its movie view
-                    ?   <MovieView 
-                            movieProps={selectedMovie} 
-                            onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}
-                        />
-                    // else, show all movie cards
-                    :   movies.map(movie => (
-                            <MovieCard 
-                                key={movie._id} 
-                                movieProps={movie} 
-                                onMovieClick={(movie) => { this.setSelectedMovie(movie) }}
+                    ? (                       
+                        <Col md={8}>
+                            <MovieView 
+                                movieProps={selectedMovie} 
+                                onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}
                             />
-                        ))
+                        </Col>                                      
+                    )
+                    // else, show all movie cards
+                    : (                                                     
+                        movies.map(movie => (
+                            <Col xs={6} md={4} lg={3}>
+                                <MovieCard 
+                                    key={movie._id} 
+                                    movieProps={movie} 
+                                    onMovieClick={(movie) => { this.setSelectedMovie(movie) }}
+                                />
+                            </Col>
+                        ))                                                
+                    )
                 }
-            </div>
+            </Row>
         );
     }
 }

@@ -1,0 +1,46 @@
+.cards {
+  height: 750px;
+  margin: 5px;
+}
+
+.cards-img {
+  height: 20em;
+  object-fit: contain;
+}
+
+.cards-title {
+  height: 3em;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cards-description {
+  height: 230px;
+}
+
+.indiv-view {
+  height: 900px;
+  margin: 5px;
+}
+
+.indiv-img {
+  height: 35em;
+  object-fit: contain;
+}
+
+.indiv-view-title {
+  height: 3em;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 900;
+}
+
+* {
+  color: #0f47a2f1;
+}
+
+.my-flix {
+  color: #4682b4;
+}
+
+/*# sourceMappingURL=index.e3f97e84.css.map */

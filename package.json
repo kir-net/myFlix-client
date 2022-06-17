@@ -26,6 +26,13 @@
     "react-dom": "^18.1.0"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0"
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "buffer": "^6.0.3",
+    "process": "^0.11.10"
+  },
+  "alias": {
+    "process": {
+      "global": "{}"
+    }
   }
 }
