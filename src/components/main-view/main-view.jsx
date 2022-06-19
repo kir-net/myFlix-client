@@ -3,6 +3,7 @@ import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
@@ -13,55 +14,48 @@ class MainView extends React.Component {
 
     constructor(){
         super();
-        // create some hard-coded app content for now
-        this.state = { movies: [
-                { 
-                    _id: 1, 
-                    Title: "Three Billboards Outside Ebbing, Missouri", 
-                    Description: "Three Billboards Outside Ebbing, Missouri is a 2017 crime drama film starring Frances McDormand as a Missouri woman who rents three roadside billboards to call attention to her daughter's unsolved rape and murder. ('Three Billboards Outside Ebbing, Missouri,' Wikipedia, The Free Encyclopedia)", 
-                    ImagePath: "https://upload.wikimedia.org/wikipedia/en/c/c7/Three_Billboards_Outside_Ebbing%2C_Missouri_poster.png",
-                    Director:{Name:"Martin McDonagh"},
-                    Actors:["Frances McDormand","Woody Harrelson","Sam Rockwell"]
-                },
-                { 
-                    _id: 2, 
-                    Title: "I'm Not There", 
-                    Description: "I'm Not There is a 2007 musical drama film. It is an unconventional biographical film inspired by the life and music of American singer-songwriter Bob Dylan.('I'm not there,'  Wikipedia, The Free Encyclopedia)", 
-                    ImagePath:"https://upload.wikimedia.org/wikipedia/en/e/ec/I%27m_Not_There.jpg",
-                    Director:{Name:"Todd Haynes"},
-                    Actors:["Christian Bale","Cate Blanchett","Heath Ledger","Ben Whishaw","Richard Gere"]
-                },
-                { 
-                    _id: 3, 
-                    Title: "Local Hero", 
-                    Description: "Local Hero is a 1983 Scottish comedy-drama film. Produced by David Puttnam, the film is about an American oil company representative who is sent to the fictional village of Ferness on the west coast of Scotland to purchase the town and surrounding property for his company. ('Local Hero (film),'  Wikipedia, The Free Encyclopedia)", 
-                    ImagePath: "https://upload.wikimedia.org/wikipedia/en/6/6a/Local_Hero_Poster.jpg",
-                    Director:{Name:"Bill Forsyth"},
-                    Actors:["Burt Lancaster","Peter Rieger","Fulton Mackay"]
-                },
-                { 
-                    _id: 4, 
-                    Title: "In Bruges", 
-                    Description: "In Bruges is a 2008 black comedy-drama crime thriller film directed and written by Martin McDonagh in his feature-length debut. The film stars Colin Farrell and Brendan Gleeson as two London-based Irish hitmen in hiding, with Ralph Fiennes as their enraged boss. The film is set and was filmed in Bruges, Belgium. ('In Bruges,'  Wikipedia, The Free Encyclopedia)", 
-                    ImagePath: "https://upload.wikimedia.org/wikipedia/en/e/ee/In_Bruges_poster.png",
-                    Director:{Name:"Martin McDonagh"},
-                    Actors:["Colin Farrell","Brendan Gleeson"]
-                }
-            ],
-            // initial value is null (no movie card clicked yet)
-            selectedMovie: null
+        // initial state
+        this.state = { 
+            movies: [],
+            selectedMovie: null,
+            user: null
         };
     }
 
+    componentDidMount(){
+        axios
+        .get('https://flix-db-823.herokuapp.com/movies')
+        .then(response => {
+            this.setState({movies: response.data});
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/
     setSelectedMovie(newSelectedMovie) {
         this.setState({
             selectedMovie: newSelectedMovie
         });
     }
 
+    /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
+    onLoggedIn(user) {
+        this.setState({
+            user
+        });
+    }
+
     render() {
-        const { movies, selectedMovie } = this.state;     
-        if (movies.length === 0) return <div className="main-view">The list is empty!</div>;  
+        const { movies, selectedMovie, user } = this.state;
+        
+        /* If there is no user, the LoginView is rendered. 
+        If there is a user logged in, the user details are passed as a prop to the LoginView */
+        if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+        
+        // Before the movies have been loaded
+        if (movies.length === 0) return <div className="main-view" />;  
         return (
             <Row className="main-view   justify-content-md-center">
                 {selectedMovie

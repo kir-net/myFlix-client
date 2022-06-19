@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Card, Button} from 'react-bootstrap';
 
 import './movie-view.scss';
@@ -26,5 +27,27 @@ export class MovieView extends React.Component {
        
         );
     }
-
 }
+
+/*  -- specify how MovieView's props should look: -- */
+MovieView.propTypes = {
+    movieProps:  PropTypes.shape({
+                Title:              PropTypes.string.isRequired,
+                Description:        PropTypes.string.isRequired,
+                Genre: PropTypes.shape({
+                    Name:           PropTypes.string.isRequired,
+                    Description:    PropTypes.string.isRequired
+                }).isRequired,
+                Director: PropTypes.shape({
+                    Name:           PropTypes.string.isRequired,
+                    Bio:            PropTypes.string.isRequired, 
+                    Birth:          PropTypes.string.isRequired,
+                    Death:          PropTypes.string
+                }).isRequired,
+                Actors:             PropTypes.arrayOf(PropTypes.string).isRequired,
+                ImagePath:          PropTypes.string.isRequired,
+                Featured:           PropTypes.bool.isRequired
+            }).isRequired,
+    onBackClick: PropTypes.func.isRequired
+};
+
