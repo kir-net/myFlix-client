@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
 import { Button, Form } from 'react-bootstrap/';
+
+import './login-view.scss';
 
 export function LoginView(props) {
     // useState() creates a local state and preserves it between the render cycles
