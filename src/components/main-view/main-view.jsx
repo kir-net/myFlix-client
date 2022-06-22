@@ -12,7 +12,8 @@ import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 
-import { Col, Row, Button } from 'react-bootstrap';
+
+import { Col, Row } from 'react-bootstrap';
 
 import './main-view.scss';
 
@@ -24,7 +25,6 @@ class MainView extends React.Component {
         // initial state
         this.state = { 
             movies: [],
-            selectedMovie: null,
             user: null
         };
     }
@@ -75,47 +75,52 @@ class MainView extends React.Component {
 
     render() {
         const { movies, user } = this.state;
-
+     
+/*
         if (!user) return <Row>
-            <Col>
-            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-            </Col>
-        </Row>
-        if (movies.length === 0) return <div className="main-view" />;
+                <Col>
+                    <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                </Col>
+            </Row>
+        if (movies.length === 0) return <div className="main-view" />;*/
 
         return (
             <Router>
+
                 <Navbar user={user} />
+                
                 <Row className="main-view justify-content-md-center">
                     
                     <Route exact path="/" render={() => {
                         if (!user) return <Col>
                                 <LoginView 
-                                    movies={movies} 
                                     onLoggedIn={user=>this.onLoggedIn(user)}
                                 />
                             </Col>
                         if (movies.length===0) return <div className="main-view"/>;
+
                         return movies.map(m => (
                             <Col md={6} lg={4} xl={3} key={m._id}>
-                            <MovieCard movie={m} />
+                                <MovieCard movie={m} />
                             </Col>
                         ))
                     }}/>
 
-                    <Route path="/register" render={() => {
+                    <Route  path="/register" render={() => {
                                 if (user) return <Redirect to="/" />
                                 return <Col md={8}>
                                     <RegistrationView />
                                 </Col>
                             }} />                    
 
-                    <Route path="/movies/:movieId" render={({ match, history }) => {
-                        /*  if (!user) return <Col>
+                    <Route  
+                        path="/movies/:movieId" 
+                        render={({ match, history }) => {
+                          if (!user) return <Col>
                                     <LoginView 
                                         onLoggedIn={user => this.onLoggedIn(user)} 
                                     />
-                                </Col>           */
+                                </Col>          
                         if (movies.length === 0) return <div className="main-view" />;
                         return <Col md={8}>
                                 <MovieView 
@@ -125,7 +130,7 @@ class MainView extends React.Component {
                             </Col>
                     }} />
 
-                    <Route path="/users/:username" render={({ match, history }) => {
+                    <Route  path="/users/:username" render={({ match, history }) => {
                         if (!user) return <Col>
                             <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                         </Col>
@@ -139,7 +144,7 @@ class MainView extends React.Component {
                         </Col>
                     }} />
 
-                    <Route path="/directors/:name" render={({ match, history }) => {
+                    <Route  path="/directors/:name" render={({ match, history }) => {
                         if (movies.length === 0) return <div className="main-view" />;
                         return <Col md={8}>
                             <DirectorView 
@@ -158,6 +163,7 @@ class MainView extends React.Component {
                     }}/>
 
                 </Row>
+
             </Router>
         );
     }

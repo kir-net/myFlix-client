@@ -1,46 +1,73 @@
-import React, { Fragment } from 'react';
-import { Navbar as NavbarBootstrap, Nav } from 'react-bootstrap';
+import React from 'react';
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 
 import './navbar.scss';
 
 export function Navbar({ user }) {
-  const isAuth = () => {
-    let accessToken = localStorage.getItem('token');
-    if (accessToken) {
-      return accessToken;
-    } else {
-      return false;
-    }
-  };
 
-  const onLoggedOut = () => {
-    localStorage.clear();
-    window.open('/', '_self');
-  };
+    const onLoggedOut = () => {
+        localStorage.clear();
+        window.open('/', '_self');
+    };
 
-  return (
-    <NavbarBootstrap bg="light" expand="lg" className="mb-5">
-      <NavbarBootstrap.Brand href="/">
-        <h1>myFlix</h1>
-      </NavbarBootstrap.Brand>
-      <NavbarBootstrap.Toggle aria-controls="navbar-nav" />
-      <NavbarBootstrap.Collapse>
-        <Nav className="me-auto">
-          {isAuth() && (
-            <Fragment>
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href={`/users/${user}`}>My Account</Nav.Link>
-              <Nav.Link onClick={onLoggedOut}>Sign-out</Nav.Link>
-            </Fragment>
-          )}
-          {!isAuth() && (
-            <Fragment>
-              <Nav.Link href={'/'}>Sign-in</Nav.Link>
-              <Nav.Link href={'/register'}>Sign-up</Nav.Link>
-            </Fragment>
-          )}
-        </Nav>
-      </NavbarBootstrap.Collapse>
-    </NavbarBootstrap>
-  );
+    const isAuth = () => {
+        if(typeof window=="undefined"){
+            return false;
+        }
+       
+        if (localStorage.getItem("token")) {
+            return localStorage.getItem("token");
+        } else {
+        return false;
+        }
+    };
+
+  
+
+    return (
+
+        <Navbar className="main-nav" sticky="top" bg="light" expand="lg" variant="light">
+            <Container>
+                <Navbar.Brand 
+                    className="navbar-logo"
+                    href="/">myFlix
+                </Navbar.Brand>
+                <Navbar.Toggle 
+                    aria-controls="responsive-navbar-nav"/>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ml-auto">
+
+                    {isAuth() && (
+                        <Nav.Link 
+                            href={`/users/${user}`} >{user}
+                        </Nav.Link>
+                    )}
+
+                    {isAuth() && (
+                        <Button 
+                            variant="link" onClick={()=>{this.onLoggedOut()}} >Logout
+                        </Button>
+                    )}  
+
+                    {isAuth() && (
+                        <Nav.Link 
+                            href={"/"} >Sign in
+                        </Nav.Link>
+                    )}
+
+                    {isAuth() && (
+                        <Nav.Link 
+                            href={"/register"} >Sign up
+                        </Nav.Link>
+                    )}
+
+                    </Nav>
+                </Navbar.Collapse>
+                
+
+
+            </Container>
+        </Navbar>
+          
+    );
 }
