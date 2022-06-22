@@ -10,6 +10,7 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { Navbar } from '../navbar/navbar';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
+import { ProfileView } from '../profile-view/profile-view';
 
 import { Col, Row, Button } from 'react-bootstrap';
 
@@ -122,6 +123,20 @@ class MainView extends React.Component {
                                     onBackClick={() => history.goBack()} 
                                 />
                             </Col>
+                    }} />
+
+                    <Route path="/users/:username" render={({ match, history }) => {
+                        if (!user) return <Col>
+                            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                        </Col>
+                        if (movies.length === 0) return <div className="main-view" />;
+                        if (!user) return <Redirect to="/" />
+                        return <Col md={8}>
+                        <ProfileView 
+                            movies={movies} 
+                            user={user === match.params.username} 
+                            onBackClick={() => history.goBack()} />
+                        </Col>
                     }} />
 
                     <Route path="/directors/:name" render={({ match, history }) => {

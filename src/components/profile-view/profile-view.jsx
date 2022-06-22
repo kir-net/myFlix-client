@@ -1,0 +1,78 @@
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+
+import { Button, Col, Container, Row } from 'react-bootstrap';
+
+import { FavoriteMoviesView } from './favorite-movies-view';
+import { UpdateView } from './update-profile-view';
+
+import './profile-view.scss';
+
+export function ProfileView(props) {
+  const [ user, setUser ] = useState(props.user);
+  const [ movies, setMovies ] = useState(props.movies);
+  const [ favoriteMovies, setFavoriteMovies ] = useState([]);
+  const currentUser = localStorage.getItem('user');
+  const token = localStorage.getItem('token');
+
+  const getUser = () => {
+    axios.get(`https://flix-db-823.herokuapp.com/users/${currentUser}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      setUser(response.data);
+      setFavoriteMovies(response.data.FavoriteMovies)
+    })
+    .catch(error => console.error(error))
+  }
+
+  useEffect(() => {
+    getUser();
+  }, [])
+
+  const handleDelete = () => {
+    axios.delete(`https://flix-db-823.herokuapp.com/users/${currentUser}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(() => {
+      alert(`The account ${user.Username} was successfully deleted.`)
+      localStorage.clear();
+      window.open('/register', '_self');
+    }).
+    catch(error => console.error(error))
+  }
+
+  return (
+        <Container id="profile-form">
+        <Row><h4>MY ACCOUNT</h4></Row>
+        <Row>
+            <Col className="left-col">Username:</Col>
+            <Col className="right-col">{user.Username}</Col>
+        </Row>
+        <Row className="mt-3">
+            <Col className="left-col">Password:</Col>
+            <Col className="right-col">******</Col>
+        </Row>
+        <Row className="mt-3">
+            <Col className="left-col">Email:</Col>
+            <Col className="right-col">{user.Email}</Col>
+        </Row>
+        <Row className="mt-3">
+            <Col className="left-col">Birthday:</Col>
+            <Col className="right-col">{user.Birthday}</Col>
+        </Row>
+        <Row className="mt-5"><h4>My favorite movies</h4></Row>
+        <Row className="mt-3">
+            <FavoriteMoviesView 
+                movies={movies} 
+                favoriteMovies={favoriteMovies} 
+                currentUser={currentUser} 
+                token={token}
+            />
+        </Row>
+        <UpdateView user={user}/>
+        <Button className="d-block mt-5" variant="warning" onClick={handleDelete}>Delete profile</Button>
+        </Container>
+    )
+}

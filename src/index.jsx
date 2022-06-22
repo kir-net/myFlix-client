@@ -1,5 +1,6 @@
 import React    from 'react';
 import ReactDOM from 'react-dom';
+
 // import {MainView} from './components/main-view/main-view';
 // here without curly braces because in main-view.jsx, "default" keyword is used for exporting
 import MainView from './components/main-view/main-view';

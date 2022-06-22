@@ -69,7 +69,7 @@ export function RegistrationView(props) {
             });
         };
 
-        //  HIER WEITERMACHEN =================================
+       
 
         return (
             <Form>
