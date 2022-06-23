@@ -23,7 +23,7 @@
 }
 
 .indiv-img {
-  height: 35em;
+  height: 25em;
   object-fit: contain;
 }
 
@@ -34,26 +34,13 @@
   font-weight: 900;
 }
 
-
-
-
-
-.navbar-light .navbar-nav .nav-link {
-  color: #1c4abd;
+.login-form {
+  padding: 5rem 8rem;
 }
 
-.navbar-light .navbar-nav .nav-link:hover {
-  color: #154bd3;
-  font-weight: 700;
-}
 
-.navbar h1 {
-  font-weight: 700;
-}
 
-.director-view {
-  color: #f5f5f5;
-}
+
 
 .label {
   font-weight: bold;
@@ -67,10 +54,6 @@
 
 .right-col {
   font-size: 18px;
-}
-
-.genre-view {
-  color: #f5f5f5;
 }
 
 .left-col {

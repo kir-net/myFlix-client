@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Row, Col, Button, Container, Form } from 'react-bootstrap/';
+import { Button, Form } from 'react-bootstrap/';
 
 import './registration-view.scss';
 
@@ -68,9 +68,7 @@ export function RegistrationView(props) {
                 alert('unable to register');
             });
         };
-
-       
-
+      
         return (
             <Form>
                 <Form.Group controlId="formUsername">
@@ -94,6 +92,17 @@ export function RegistrationView(props) {
                     />
                     {/* display validation error */} 
                     {passwordErr && <p>{passwordErr}</p>}
+                </Form.Group>
+                <Form.Group controlId="formBirthday">
+                    <Form.Label>Birthday</Form.Label>
+                    <Form.Control 
+                        type="text" 
+                        placeholder="YYYY-MM-DD" 
+                        value={birthday} 
+                        onChange={e => setBirthday(e.target.value)} 
+                    />
+                    {/* display validation error */} 
+                    {birthdayErr && <p>{birthdayErr}</p>}
                 </Form.Group>
                 <Button 
                     variant="primary" 
