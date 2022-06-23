@@ -68,6 +68,5 @@ export function LoginView(props) {
                 Log In
             </Button>
         </Form>
-
     );
 }

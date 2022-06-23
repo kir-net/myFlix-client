@@ -52,7 +52,8 @@
                 Username: username,
                 Password: password,
                 Email: email,
-                Birthday: birthday
+                Birthday: birthday,
+                FavoriteMovies: []
             })
             .then(response => {
                 const data = response.data;

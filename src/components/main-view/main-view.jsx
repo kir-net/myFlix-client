@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { MovieCard }        from '../movie-card/movie-card';
 import { MovieView }        from '../movie-view/movie-view';
@@ -105,7 +105,7 @@ class MainView extends React.Component {
                         render={() => {
                             if (user) return <Redirect to="/" />
                             return <Col md={8}>
-                                <LoginView />
+                                <LoginView onLoggedIn={(user)=>this.onLoggedIn(user)}/>
                             </Col>
                     }} />                       
 
