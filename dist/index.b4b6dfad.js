@@ -39796,7 +39796,7 @@ function RegistrationView(props) {
     const handleSubmit = (e)=>{
         e.preventDefault();
         const isReq = validate();
-        if (isReq) (0, _axiosDefault.default).post("https://movie-api-93167.herokuapp.com/users", {
+        if (isReq) (0, _axiosDefault.default).post("https://flix-db-823.herokuapp.com/users", {
             Username: username,
             Password: password,
             Email: email,

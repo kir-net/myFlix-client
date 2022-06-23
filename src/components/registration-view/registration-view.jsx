@@ -48,7 +48,7 @@
         e.preventDefault();
         const isReq = validate();
         if (isReq) {
-            axios.post('https://movie-api-93167.herokuapp.com/users', {
+            axios.post('https://flix-db-823.herokuapp.com/users', {
                 Username: username,
                 Password: password,
                 Email: email,
