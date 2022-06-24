@@ -40500,7 +40500,7 @@ function Menubar({ user  }) {
                             }, this),
                             !isAuth() && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                 href: "/login",
-                                children: "Sign in"
+                                children: "Login"
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
                                 lineNumber: 50,
@@ -40508,7 +40508,7 @@ function Menubar({ user  }) {
                             }, this),
                             !isAuth() && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                 href: "/register",
-                                children: "Sign up"
+                                children: "Register"
                             }, void 0, false, {
                                 fileName: "src/components/navbar/navbar.jsx",
                                 lineNumber: 56,

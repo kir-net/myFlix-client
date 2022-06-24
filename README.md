@@ -5,9 +5,19 @@
 
 ## Current functionality
 
-- displays MainView with MovieCards as an example list of movies
+- display Navbar to allow user to register and log in 
+- display MainView with MovieCards as an example list of movies
 - on clicking one of the list items, display its MovieView with some detailed information
-- return to MainView by clicking "Back" button
+- display further information on director and genre on button clicks
+- return to previous view by clicking "Back" button
+- display information on user account 
+- allow user to add movies to their list of favorites
+- allow user to deregister
+
+
+## Current ToDos
+- display info when login was not successful
+- allow user to remove movie from their list of favorites
 
 
 ## Usage

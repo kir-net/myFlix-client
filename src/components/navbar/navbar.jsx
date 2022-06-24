@@ -48,13 +48,13 @@ export function Menubar({ user }) {
 
                         {!isAuth() && (
                             <Nav.Link 
-                                href={"/login"} >Sign in
+                                href={"/login"} >Login
                             </Nav.Link>
                         )}
 
                         {!isAuth() && (
                             <Nav.Link 
-                                href={"/register"} >Sign up
+                                href={"/register"} >Register
                             </Nav.Link>
                         )}
 
