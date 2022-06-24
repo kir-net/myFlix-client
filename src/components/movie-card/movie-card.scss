@@ -1,22 +1,21 @@
 .cards {         
-    height: 650px;
-    margin: 20px 5px;
+    height: 520px;
+    margin: 30px 5px;
 }
 
 .cards-img {   
     height: 300px;
     object-fit: contain;
-    //object-fit: scale-down;
-    //object-fit: cover;
 }
 
 .cards-title {
-    height: 3em;
+    height: 50px;
     font-weight:700;
     text-align: center; 
 }
 
-.cards-description{
-    height: 170px;
+.div-fav-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
-

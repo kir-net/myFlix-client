@@ -1,6 +1,6 @@
 .cards {
-  height: 650px;
-  margin: 20px 5px;
+  height: 520px;
+  margin: 30px 5px;
 }
 
 .cards-img {
@@ -9,13 +9,15 @@
 }
 
 .cards-title {
-  height: 3em;
+  height: 50px;
   text-align: center;
   font-weight: 700;
 }
 
-.cards-description {
-  height: 170px;
+.div-fav-buttons {
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
 }
 
 .indiv-view {
@@ -35,7 +37,7 @@
 }
 
 .button {
-  margin: 0 10px;
+  margin: 0 20px;
 }
 
 .login-form {
@@ -72,20 +74,9 @@
   font-size: 18px;
 }
 
-#profile-form {
-  color: #f5f5f5;
-  background-color: #f8f6e9;
-  padding: 3em;
-  position: absolute;
-  top: 30%;
-}
-
-#profile-form #movie-card {
-  color: #091b49;
-}
-
-.left-col {
-  text-align: right;
+.form-element {
+  margin-top: 60px;
+  display: inline-block;
 }
 
 * {

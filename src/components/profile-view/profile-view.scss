@@ -1,15 +1,4 @@
-#profile-form {
-    padding: 3em;
-    background-color: rgb(248, 246, 233);
-    color: rgb(245, 245, 245);
-    position: absolute;
-    top: 30%;
-}
-
-#profile-form #movie-card {
-    color: rgb(9, 27, 73);
-}
-
-.left-col {
-    text-align: right;
+.form-element {
+    margin-top: 60px; 
+    display: inline-block;
 }

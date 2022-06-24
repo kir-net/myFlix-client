@@ -22,7 +22,7 @@ export function Menubar({ user }) {
     };
   
     return (        
-        <Navbar className="main-nav" sticky="top" bg="dark" expand="lg" variant="dark">
+        <Navbar className="main-nav" sticky="top" bg="dark" expand="sm" variant="dark">
             <Container>
             <Navbar.Brand 
                 className="navbar-logo"

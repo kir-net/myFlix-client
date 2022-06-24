@@ -9,6 +9,7 @@ export function LoginView(props) {
     // Declare hook for each input
     const [usernameErr, setUsernameErr] = useState('');
     const [passwordErr, setPasswordErr] = useState('');
+    
 
     // Validate user inputs
     const validate = () => {
