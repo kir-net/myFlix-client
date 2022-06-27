@@ -1,23 +1,19 @@
-import React           from 'react';
-import ReactDOM        from 'react-dom';
-import { createStore } from 'redux'; // replaced by configureStore
-import {configureStore } from 'redux';
-import { Provider }    from 'react-redux';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Container } from 'react-bootstrap';
+import { legacy_createStore as createStore} from 'redux';
+import { Provider } from 'react-redux';
 import moviesApp from './reducers/reducers';
-import { devToolsEnhancer } from 'redux-devtools-extension';
 
-// import {MainView} from './components/main-view/main-view';
-// here without curly braces because in main-view.jsx, "default" keyword is used for exporting
-import MainView  from './components/main-view/main-view';
-import Container from 'react-bootstrap/Container';
+import MainView from './components/main-view/main-view';
 
+//Bundles index.scss
 import './index.scss';
 
-// const store = createStore(moviesApp, devToolsEnhancer());
-const store = configureStore(moviesApp, devToolsEnhancer());
+//Store
+const store = createStore(moviesApp);
 
-
-// Main component (will eventually use all the others)
+//Main component
 class MyFlixApplication extends React.Component {
     render() {
         return (
@@ -26,13 +22,12 @@ class MyFlixApplication extends React.Component {
                     <MainView />
                 </Container>
             </Provider>
-           
         );
     }
 }
 
-// Find root of app
+//Finds root of app
 const container = document.getElementsByClassName('app-container')[0];
 
-// Tell React to render app in root DOM element
+//Tells React to render app in root of DOM element
 ReactDOM.render(React.createElement(MyFlixApplication), container);
