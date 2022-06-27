@@ -1,19 +1,34 @@
 import React from 'react';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
+
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
-import { MovieCard }        from '../movie-card/movie-card';
-import { MovieView }        from '../movie-view/movie-view';
-import { LoginView }        from '../login-view/login-view';
-import { RegistrationView } from '../registration-view/registration-view';
-import { Menubar }          from '../navbar/navbar';
-import { DirectorView }     from '../director-view/director-view';
-import { GenreView }        from '../genre-view/genre-view';
-import { ProfileView }      from '../profile-view/profile-view';
-import { Col, Row }         from 'react-bootstrap';
+/*
+        import { MovieCard }        from '../movie-card/movie-card';
+        import { MovieView }        from '../movie-view/movie-view';
+        import { LoginView }        from '../login-view/login-view';
+        import { RegistrationView } from '../registration-view/registration-view';
+        import { Menubar }          from '../navbar/navbar';
+        import { DirectorView }     from '../director-view/director-view';
+        import { GenreView }        from '../genre-view/genre-view';
+        import { ProfileView }      from '../profile-view/profile-view';
+        import { Col, Row }         from 'react-bootstrap';
+*/
 
 import './main-view.scss';
+
+// import the relevant actions
+import { setMovies } from '../../actions/actions';
+
+// we haven't written this one yet
+import MoviesList from '../movies-list/movies-list';
+/* 
+  #1 The rest of components import statements but without the MovieCard's 
+  because it will be imported and used in the MoviesList component rather
+  than in here. 
+*/
 
 
 class MainView extends React.Component {
@@ -22,7 +37,7 @@ class MainView extends React.Component {
         super();
         // initial state
         this.state = { 
-            movies: [],
+           //       movies: [],
             user: null
         };
     }
@@ -32,10 +47,8 @@ class MainView extends React.Component {
             headers: { Authorization: `Bearer ${token}`}
         })
         .then(response => {
-            // Assign the result to the state
-            this.setState({
-            movies: response.data
-            });
+            // #4
+            this.props.setMovies(response.data);
         })
         .catch(function (error) {
             console.log(error);
@@ -73,7 +86,9 @@ class MainView extends React.Component {
 */
  
     render() {
-        const { movies, user } = this.state;
+        // #5 movies is extracted from this.props rather than from the this.state
+        let { movies } = this.props;
+        let { user } = this.state;
      
 
         return (
@@ -90,12 +105,9 @@ class MainView extends React.Component {
                             </Col>
                         if (movies.length===0) return <div className="main-view"/>;
 
-                        return movies.map(m => (
-                            <Col md={6} lg={4} xl={3} key={m._id}>
-                                <MovieCard movie={m} />
-                            </Col>
-                        ))
-                    }}/>
+                        // #6
+                        return <MoviesList movies={movies}/>;
+                    }} />
 
                     <Route  
                         path="/login" 
@@ -160,7 +172,7 @@ class MainView extends React.Component {
                                     onBackClick={() => history.goBack()} 
                                 />
                             </Col>
-                    }}/>
+                    }} />
 
                     <Route 
                         path="/genres/:name" 
@@ -172,7 +184,7 @@ class MainView extends React.Component {
                                     onBackClick={() => history.goBack()} 
                                 />
                             </Col>
-                    }}/>
+                    }} />
 
                 </Row>
             </Router>
@@ -180,5 +192,10 @@ class MainView extends React.Component {
     }
 }
 
-// adding the "default" keyword enables importing (here in index.jsx) without curly braces
-export default MainView;
+// #7
+let mapStateToProps = state => {
+    return { movies: state.movies }
+}
+  
+// #8
+export default connect(mapStateToProps, {setMovies} )(MainView);
