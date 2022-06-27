@@ -11,10 +11,7 @@ import { Menubar }          from '../navbar/navbar';
 import { DirectorView }     from '../director-view/director-view';
 import { GenreView }        from '../genre-view/genre-view';
 import { ProfileView }      from '../profile-view/profile-view';
-
-
-
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row }         from 'react-bootstrap';
 
 import './main-view.scss';
 
