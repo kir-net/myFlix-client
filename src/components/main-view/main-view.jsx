@@ -5,17 +5,14 @@ import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
-/*
-        import { MovieCard }        from '../movie-card/movie-card';
-        import { MovieView }        from '../movie-view/movie-view';
-        import { LoginView }        from '../login-view/login-view';
-        import { RegistrationView } from '../registration-view/registration-view';
-        import { Menubar }          from '../navbar/navbar';
-        import { DirectorView }     from '../director-view/director-view';
-        import { GenreView }        from '../genre-view/genre-view';
-        import { ProfileView }      from '../profile-view/profile-view';
-        import { Col, Row }         from 'react-bootstrap';
-*/
+import { MovieView }        from '../movie-view/movie-view';
+import { LoginView }        from '../login-view/login-view';
+import { RegistrationView } from '../registration-view/registration-view';
+import { Menubar }          from '../navbar/navbar';
+import { DirectorView }     from '../director-view/director-view';
+import { GenreView }        from '../genre-view/genre-view';
+import { ProfileView }      from '../profile-view/profile-view';
+import { Col, Row }         from 'react-bootstrap';
 
 import './main-view.scss';
 
@@ -24,12 +21,6 @@ import { setMovies } from '../../actions/actions';
 
 // we haven't written this one yet
 import MoviesList from '../movies-list/movies-list';
-/* 
-  #1 The rest of components import statements but without the MovieCard's 
-  because it will be imported and used in the MoviesList component rather
-  than in here. 
-*/
-
 
 class MainView extends React.Component {
 

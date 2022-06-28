@@ -2,3 +2,12 @@
     margin-top: 60px; 
     display: inline-block;
 }
+
+.div-button-add-favs{
+    visibility: hidden;
+}
+
+.div-button-rem-favs{
+    visibility: visible;
+    width: 60%;
+}

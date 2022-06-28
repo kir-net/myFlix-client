@@ -58,20 +58,25 @@ export class MovieCard extends React.Component {
                         <Button 
                             className="button-add-favs"
                             variant="outline-success"                     
-                            onClick={() => this.addToFavs(movie._id) }>+ Favs                      
+                            onClick={() => this.addToFavs(movie._id) }>add                      
                         </Button> 
                     </div> 
                     <div className="div-button-rem-favs">
                         <Button 
                             className="button-rem-favs"
                             variant="outline-danger"                     
-                            onClick={() => this.remFromFavs(movie._id) }> - Favs                      
+                            onClick={() => this.remFromFavs(movie._id) }>remove                      
                         </Button> 
                     </div>
                 </div>                          
             </Card.Header>
             <Card.Body>                          
-                <Card.Text className="cards-description">{movie.Description.split(' ').slice(0, 14).join(' ') + ' [...]'}</Card.Text>
+                <Card.Text className="cards-description">
+                    {movie.Description.split(' ').slice(0, 14).join(' ') + ' '}
+                    <Link to={`/movies/${movie._id}`}>
+                        [...]
+                    </Link>
+                </Card.Text>
             </Card.Body>
             </Card>
         );

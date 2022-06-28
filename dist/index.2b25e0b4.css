@@ -1,0 +1,104 @@
+* {
+  color: #0f47a2f1;
+}
+
+.cards {
+  height: 520px;
+  margin: 30px 5px;
+}
+
+.cards-img {
+  height: 300px;
+  object-fit: contain;
+}
+
+.cards-title {
+  height: 50px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.div-fav-buttons {
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+
+.div-button-add-favs, .div-button-rem-favs {
+  visibility: visible;
+  width: 30%;
+}
+
+
+
+.indiv-view {
+  margin: 5px;
+}
+
+.indiv-img {
+  height: 25em;
+  object-fit: contain;
+}
+
+.indiv-view-title {
+  height: 3em;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 900;
+}
+
+.button {
+  margin: 0 20px;
+}
+
+.login-form {
+  padding: 5rem 8rem;
+}
+
+.registration-form {
+  padding: 5rem;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.left-col {
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.right-col {
+  font-size: 18px;
+}
+
+.left-col {
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.right-col {
+  font-size: 18px;
+}
+
+.form-element {
+  margin-top: 60px;
+  display: inline-block;
+}
+
+.div-button-add-favs {
+  visibility: hidden;
+}
+
+.div-button-rem-favs {
+  visibility: visible;
+  width: 60%;
+}
+
+.my-flix {
+  color: #4682b4;
+}
+
+/*# sourceMappingURL=index.2b25e0b4.css.map */

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './profile-view.scss'
-import PropTypes from 'prop-types';
 import { Form, Button, Container, Col, Row, Modal } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from "react-router-dom";
@@ -86,16 +85,19 @@ import { MovieCard } from '../movie-card/movie-card';
             console.log(movies)            
             return (
                 <Row className="justify-content-md-center">
-                    {favoriteMovies.length === 0 ? (<h5>Add some movies to your list</h5>) : (
-                        favoriteMovies.map((movieId, i) => (
-                            <Col md={6} lg={4}>
-                                <MovieCard 
-                                    key={`${i}-${movieId}`} 
-                                    movie={movies.find(m => m._id == movieId)} 
-                                />
-                            </Col>
-                        ))
-                    )}
+                    {favoriteMovies.length === 0 
+                        ? (<h5>Add some movies to your list</h5>) 
+                        : (
+                            favoriteMovies.map((movieId, i) => (
+                                <Col md={6} lg={4}>
+                                    <MovieCard 
+                                        key={`${i}-${movieId}`} 
+                                        movie={movies.find(m => m._id == movieId)} 
+                                    />
+                                </Col>
+                            ))
+                        )
+                    }
                 </Row>
             )          
         }
@@ -125,10 +127,10 @@ import { MovieCard } from '../movie-card/movie-card';
                 </Modal>
                 </>
             );
-        }
+        } 
 
         return (
-            <p>
+            <div>
                 <Container className="form-element">
                     
                 <h1>{username}'s Account</h1>
@@ -172,6 +174,6 @@ import { MovieCard } from '../movie-card/movie-card';
                 </Form>
                 
                 </Container>
-            </p>
+            </div>
         )
     }
