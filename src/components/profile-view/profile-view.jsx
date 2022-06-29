@@ -80,7 +80,25 @@ import { MovieCard } from '../movie-card/movie-card';
                 console.log('Error')
             });
         }
- 
+
+        const remFromFavs = (movieId) => {
+            let user = localStorage.getItem('user');
+            let token = localStorage.getItem('token');
+            axios
+            .delete(`https://flix-db-823.herokuapp.com/users/${user}/movies/${movieId}`, 
+            {},
+            {
+              headers: { Authorization: `Bearer ${token}`}
+            })
+            .then((response) => {
+              console.log(response.data)
+              alert(`The movie was successfully removed from your list.`)
+            }).
+            catch(error => console.error(error))
+        }
+
+        
+        
         const renderFavorites = () => {
             console.log(movies)            
             return (
@@ -90,18 +108,32 @@ import { MovieCard } from '../movie-card/movie-card';
                         : (
                             favoriteMovies.map((movieId, i) => (
                                 <Col md={6} lg={4}>
-                                    <MovieCard 
-                                        key={`${i}-${movieId}`} 
-                                        movie={movies.find(m => m._id == movieId)} 
-                                    />
+                                    <div>
+                                        <MovieCard 
+                                            key={`${i}-${movieId}`} 
+                                            movie={movies.find(m => m._id == movieId)} 
+                                        />
+                                        <div className="div-button-rem-favs">
+                                            <Button 
+                                                className="button-rem-favs"
+                                                variant="outline-danger"                     
+                                                onClick={() => remFromFavs(movieId) }>&#x1f5d1;                   
+                                            </Button> 
+                                        </div>
+                                    </div>
+                                    
+                                    
                                 </Col>
+                                
                             ))
                         )
                     }
                 </Row>
             )          
         }
+        
 
+        
         // Functions needed to open and close the modal (below) to delete a user 
         const handleClose = () => setShow(false);
         const handleShow = () => setShow(true);

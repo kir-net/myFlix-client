@@ -1,6 +1,13 @@
 .cards {         
-    height: 520px;
+    height: 620px;
     margin: 30px 5px;
+    min-width:200px !important; 
+}
+
+.cards:hover{
+    box-shadow: 0 0 1px 1px rgb(220, 220, 220);
+    background-color: rgb(250, 251, 255);
+    
 }
 
 .cards-img {   
@@ -8,19 +15,27 @@
     object-fit: contain;
 }
 
+
+.cards-img:hover{
+    box-shadow: 0 0 5px 1px rgb(127, 127, 128);
+}
+
 .cards-title {
     height: 50px;
     font-weight:700;
-    text-align: center; 
+    text-align: left; 
 }
 
-.div-fav-buttons{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.div-button-add-favs, .div-button-rem-favs{
+.div-button-add-favs{
     visibility: visible;
-    width: 30%;
+    text-align: right;
+}
+
+.div-button-rem-favs{
+    visibility: hidden;
+    
+}
+
+.text-link:hover{
+    font-weight: 500;
 }

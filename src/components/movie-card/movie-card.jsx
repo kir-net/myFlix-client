@@ -9,23 +9,7 @@ import './movie-card.scss';
 
 
 export class MovieCard extends React.Component {
-
-    // Add Favorite movie 
-    addToFavs(movieId) {
-        const currentUser = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        axios.post(`https://flix-db-823.herokuapp.com/users/${currentUser}/movies/${movieId}`, 
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}`}
-        })
-        .then((response) => {
-          console.log(response.data)
-          alert(`The movie was successfully added to your list.`)
-        }).
-        catch(error => console.error(error))
-    }
-
+ 
     // Remove Favorite movie 
     remFromFavs(movieId) {
         const currentUser = localStorage.getItem('user');
@@ -48,36 +32,21 @@ export class MovieCard extends React.Component {
 
         return (
             <Card className='cards'>
-            <Link to={`/movies/${movie._id}`}>
-                <Card.Img className='cards-img' variant="top" src={movie.ImagePath} />
-            </Link>
-            <Card.Header>
-                <Card.Title className='cards-title'>{movie.Title}</Card.Title>
-                <div className="div-fav-buttons">
-                    <div className="div-button-add-favs">
-                        <Button 
-                            className="button-add-favs"
-                            variant="outline-success"                     
-                            onClick={() => this.addToFavs(movie._id) }>add                      
-                        </Button> 
-                    </div> 
-                    <div className="div-button-rem-favs">
-                        <Button 
-                            className="button-rem-favs"
-                            variant="outline-danger"                     
-                            onClick={() => this.remFromFavs(movie._id) }>remove                      
-                        </Button> 
-                    </div>
-                </div>                          
-            </Card.Header>
-            <Card.Body>                          
-                <Card.Text className="cards-description">
-                    {movie.Description.split(' ').slice(0, 14).join(' ') + ' '}
-                    <Link to={`/movies/${movie._id}`}>
-                        [...]
-                    </Link>
-                </Card.Text>
-            </Card.Body>
+                <Link to={`/movies/${movie._id}`}>
+                    <Card.Img className='cards-img' variant="top" src={movie.ImagePath} />
+                </Link>
+                <Card.Header>
+                    <Card.Title className='cards-title'>{movie.Title}</Card.Title>
+                                                                                                          
+                </Card.Header>
+                <Card.Body>                          
+                    <Card.Text className="cards-description">
+                        {movie.Description.split(' ').slice(0, 14).join(' ') + ' '}
+                        <Link to={`/movies/${movie._id}`} className="text-link">
+                            [...]
+                        </Link>
+                    </Card.Text>
+                </Card.Body>
             </Card>
         );
     }

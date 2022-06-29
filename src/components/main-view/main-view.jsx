@@ -1,10 +1,7 @@
-import React from 'react';
-import axios from 'axios';
-
-import { connect } from 'react-redux';
-
+import   React              from 'react';
+import   axios              from 'axios';
+import { connect }          from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-
 import { MovieView }        from '../movie-view/movie-view';
 import { LoginView }        from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -13,14 +10,10 @@ import { DirectorView }     from '../director-view/director-view';
 import { GenreView }        from '../genre-view/genre-view';
 import { ProfileView }      from '../profile-view/profile-view';
 import { Col, Row }         from 'react-bootstrap';
+import { setMovies }        from '../../actions/actions';
+import   MoviesList         from '../movies-list/movies-list';
 
 import './main-view.scss';
-
-// import the relevant actions
-import { setMovies } from '../../actions/actions';
-
-// we haven't written this one yet
-import MoviesList from '../movies-list/movies-list';
 
 class MainView extends React.Component {
 
@@ -28,7 +21,6 @@ class MainView extends React.Component {
         super();
         // initial state
         this.state = { 
-           //       movies: [],
             user: null
         };
     }

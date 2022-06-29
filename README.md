@@ -22,7 +22,6 @@
 
 ## Usage
 
-To test current functionality:
 - enter parcel src/index.html to start server, then
 - enter http://localhost:1234/ in browser
 

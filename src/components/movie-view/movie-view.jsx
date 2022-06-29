@@ -10,7 +10,22 @@ import './movie-view.scss';
 /*MovieView: display details about a movie clicked by user*/
 export class MovieView extends React.Component {
 
-  
+    // Add Favorite movie 
+    addToFavs(movieId) {
+        const currentUser = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        axios.post(`https://flix-db-823.herokuapp.com/users/${currentUser}/movies/${movieId}`, 
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}`}
+        })
+        .then((response) => {
+          console.log(response.data)
+          alert(`The movie was successfully added to your list.`)
+        }).
+        catch(error => console.error(error))
+    }
+
     render() {
         const { movie, onBackClick } = this.props;
 
@@ -24,8 +39,8 @@ export class MovieView extends React.Component {
             </Card.Header>
             <Card.Body>            
                 <Card.Text>{movie.Description}</Card.Text>
-                <Card.Text>Director: {movie.Director.Name}</Card.Text>
-                <Card.Text>Starring: {movie.Actors.join(', ')}</Card.Text>
+                <Card.Text><strong>Director: </strong>{movie.Director.Name}</Card.Text>
+                <Card.Text><strong>Starring: </strong>{movie.Actors.join(', ')}</Card.Text>
                 <Link to={`/directors/${movie.Director.Name}`}>
                     <Button className="button" variant="outline-primary">Director</Button>
                 </Link>
@@ -33,6 +48,12 @@ export class MovieView extends React.Component {
                     <Button className="button" variant="outline-primary">Genre</Button>
                 </Link>
                 <Button className="button" onClick={() => { onBackClick(null); }} >Back</Button>               
+                <Button 
+                    className="button button-add-favs"
+                    variant="outline-success"                     
+                    onClick={() => this.addToFavs(movie._id) }>&#x2764;                      
+                </Button> 
+                                   
             </Card.Body>           
             </Card>
        
