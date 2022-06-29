@@ -14,7 +14,8 @@ export class MovieView extends React.Component {
     addToFavs(movieId) {
         const currentUser = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-        axios.post(`https://flix-db-823.herokuapp.com/users/${currentUser}/movies/${movieId}`, 
+        axios
+        .post(`https://flix-db-823.herokuapp.com/users/${currentUser}/movies/${movieId}`, 
         {},
         {
           headers: { Authorization: `Bearer ${token}`}
@@ -22,8 +23,8 @@ export class MovieView extends React.Component {
         .then((response) => {
           console.log(response.data)
           alert(`The movie was successfully added to your list.`)
-        }).
-        catch(error => console.error(error))
+        })
+        .catch(error => console.error(error))
     }
 
     render() {

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './profile-view.scss'
 import { Form, Button, Container, Col, Row, Modal } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { MovieCard } from '../movie-card/movie-card';
+
+import './profile-view.scss'
 
     export function ProfileView({ movies }) {
         const [username, setUsername] = useState('');
@@ -82,23 +83,22 @@ import { MovieCard } from '../movie-card/movie-card';
         }
 
         const remFromFavs = (movieId) => {
-            let user = localStorage.getItem('user');
+            let currentUser = localStorage.getItem('user');
             let token = localStorage.getItem('token');
             axios
-            .delete(`https://flix-db-823.herokuapp.com/users/${user}/movies/${movieId}`, 
-            {},
+            .delete(`https://flix-db-823.herokuapp.com/users/${currentUser}/movies/${movieId}`, 
             {
               headers: { Authorization: `Bearer ${token}`}
             })
             .then((response) => {
               console.log(response.data)
-              alert(`The movie was successfully removed from your list.`)
-            }).
-            catch(error => console.error(error))
+              //alert(`The movie was successfully removed from your list.`)
+              window.location.reload()
+            })
+            .catch(error => console.error(error))
         }
 
-        
-        
+           
         const renderFavorites = () => {
             console.log(movies)            
             return (

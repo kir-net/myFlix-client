@@ -9,7 +9,7 @@ import './movie-card.scss';
 
 
 export class MovieCard extends React.Component {
- 
+ /*
     // Remove Favorite movie 
     remFromFavs(movieId) {
         const currentUser = localStorage.getItem('user');
@@ -24,7 +24,7 @@ export class MovieCard extends React.Component {
           alert(`The movie was successfully removed from your list.`)
         }).
         catch(error => console.error(error))
-    }
+    }*/
 
 
     render() {
