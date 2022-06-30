@@ -1,7 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
-import {Button, Card} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 
 import { Link } from "react-router-dom";
 
@@ -9,23 +8,6 @@ import './movie-card.scss';
 
 
 export class MovieCard extends React.Component {
- /*
-    // Remove Favorite movie 
-    remFromFavs(movieId) {
-        const currentUser = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        axios.delete(`https://flix-db-823.herokuapp.com/users/${currentUser}/movies/${movieId}`, 
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}`}
-        })
-        .then((response) => {
-          console.log(response.data)
-          alert(`The movie was successfully removed from your list.`)
-        }).
-        catch(error => console.error(error))
-    }*/
-
 
     render() {
         const { movie } = this.props;

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import './login-view.scss';
+import PropTypes from 'prop-types';
 import axios from 'axios';
+
+import './login-view.scss';
 
 export function LoginView(props) {
     const [username, setUsername] = useState('');
@@ -15,18 +17,18 @@ export function LoginView(props) {
     const validate = () => {
         let isReq = true;
         if (!username) {
-        setUsernameErr('Username Required');
-        isReq = false;
-        } else if (username.length < 2) {
-        setUsernameErr('Username must be at least 5 characters long');
-        isReq = false;
+            setUsernameErr('Username Required');
+            isReq = false;
+        } else if (username.length < 4) {
+            setUsernameErr('Username must be at least 4 characters long');
+            isReq = false;
         }
         if (!password) {
-        setPasswordErr('Password Required');
-        isReq = false;
+            setPasswordErr('Password Required');
+            isReq = false;
         } else if (password.length < 6) {
-        setPasswordErr('Password must be at least 6 characters long');
-        isReq = false;
+            setPasswordErr('Password must be at least 6 characters long');
+            isReq = false;
         }
         return isReq; 
     }
@@ -35,17 +37,18 @@ export function LoginView(props) {
         e.preventDefault();
         const isReq = validate();
         if (isReq) {
-        /* Send a request to the server for authentication */
-        axios.post('https://flix-db-823.herokuapp.com/login', {
-            Username: username,
-            Password: password
-        })
+            /* Send a request to the server for authentication */
+            axios.post('https://flix-db-823.herokuapp.com/login', {
+                Username: username,
+                Password: password
+            })
             .then(response => {
-            const data = response.data;
-            props.onLoggedIn(data);
+                const data = response.data;
+                props.onLoggedIn(data);
             })
             .catch(e => {
-            console.log('no such user')
+                console.log('no such user')
+                alert(`Wrong username or password. Please try again.`)
             });
         }
     };
@@ -70,4 +73,9 @@ export function LoginView(props) {
             </Button>
         </Form>
     );
+}
+
+LoginView.PropTypes = {
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired
 }

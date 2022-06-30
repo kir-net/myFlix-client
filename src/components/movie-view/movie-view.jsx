@@ -51,7 +51,8 @@ export class MovieView extends React.Component {
                 <Button className="button" onClick={() => { onBackClick(null); }} >Back</Button>               
                 <Button 
                     className="button button-add-favs"
-                    variant="outline-success"                     
+                    variant="outline-success"
+                    title="Add to My Favorites"                      
                     onClick={() => this.addToFavs(movie._id) }>&#x2764;                      
                 </Button> 
                                    

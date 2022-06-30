@@ -3,11 +3,21 @@
     display: inline-block;
 }
 
-.div-button-add-favs{
-    visibility: hidden;
-}
-
 .div-button-rem-favs{
     visibility: visible;
-    width: 60%;
+    width: 100%;
+    height: 50px;
+    text-align: center;  
+    margin: 0 0 80px;
+    padding: 0px;
+}
+
+.movie-card:hover{
+    box-shadow: 0 0 1px 1px rgb(220, 220, 220);
+    background-color: rgb(250, 251, 255);  
+}
+
+.button-rem-favs{
+    margin: 0px;
+    padding: 0px;
 }

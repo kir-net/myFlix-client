@@ -42,7 +42,7 @@ class MainView extends React.Component {
         let accessToken = localStorage.getItem('token');
         if (accessToken !== null) {
             this.setState({
-            user: localStorage.getItem('user')
+                user: localStorage.getItem('user')
             });
             this.getMovies(accessToken);
         }
@@ -59,15 +59,14 @@ class MainView extends React.Component {
         this.getMovies(authData.token);
     }
 
-/*  onLoggedOut() {
+    onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         this.setState({
             user: null
         });
     }
-*/
- 
+  
     render() {
         // #5 movies is extracted from this.props rather than from the this.state
         let { movies } = this.props;
@@ -87,8 +86,6 @@ class MainView extends React.Component {
                                 <LoginView onLoggedIn={(user)=>this.onLoggedIn(user)} />
                             </Col>
                         if (movies.length===0) return <div className="main-view"/>;
-
-                        // #6
                         return <MoviesList movies={movies}/>;
                     }} />
 
