@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
 
 import './login-view.scss';
 
@@ -19,17 +21,11 @@ export function LoginView(props) {
         if (!username) {
             setUsernameErr('Username Required');
             isReq = false;
-        } else if (username.length < 4) {
-            setUsernameErr('Username must be at least 4 characters long');
-            isReq = false;
-        }
+        } 
         if (!password) {
             setPasswordErr('Password Required');
             isReq = false;
-        } else if (password.length < 6) {
-            setPasswordErr('Password must be at least 6 characters long');
-            isReq = false;
-        }
+        } 
         return isReq; 
     }
 
@@ -75,7 +71,20 @@ export function LoginView(props) {
     );
 }
 
-LoginView.PropTypes = {
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    };
+}
+
+export default connect(mapStateToProps, { setUser })(LoginView);
+
+
+/*  -- specifyPropTypes: -- */
+LoginView.propTypes = {
+    user: PropTypes.shape({
+        username: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired
+    }),
+    onLoggedIn: PropTypes.func.isRequired
 }

@@ -7,6 +7,7 @@ import { MovieCard } from '../movie-card/movie-card';
 
 import './profile-view.scss'
 
+
 export function ProfileView({ movies }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -21,7 +22,7 @@ export function ProfileView({ movies }) {
 
     const getUser = () => {
         let token = localStorage.getItem('token');
-        let user = localStorage.getItem("user");
+        let user = localStorage.getItem('user');
         axios
         .get(`https://flix-db-823.herokuapp.com/users/${user}`, {
             headers: { Authorization: `Bearer ${token}` }
@@ -40,7 +41,7 @@ export function ProfileView({ movies }) {
     // Update users info 
     const updateUser = () => {
         let token = localStorage.getItem('token');
-        let user = localStorage.getItem("user");
+        let user = localStorage.getItem('user');
         axios
         .put(`https://flix-db-823.herokuapp.com/users/${user}`, {
             Username: username,
@@ -93,14 +94,14 @@ export function ProfileView({ movies }) {
         })
         .then((response) => {
             console.log(response.data)
-            //alert(`The movie was successfully removed from your list.`)
             window.location.reload()
         })
         .catch(error => console.error(error))
     }
-
+    
         
     const renderFavorites = () => {
+
         console.log(movies)            
         return (
             <Row className="justify-content-md-center">
@@ -108,7 +109,7 @@ export function ProfileView({ movies }) {
                     ? (<h5>Add some movies to your list</h5>) 
                     : (
                         favoriteMovies.map((movieId, i) => (
-                            <Col md={6} lg={4}>
+                            <Col md={6} xl={4}>
                                 <div className="movie-card">
                                     <MovieCard 
                                         key={`${i}-${movieId}`} 
@@ -121,13 +122,9 @@ export function ProfileView({ movies }) {
                                             title="Remove from My Favorites"                   
                                             onClick={() => remFromFavs(movieId) }>&#x1f5d1;                   
                                         </Button> 
-                                    </div>
-                                    
-                                </div>
-                                
-                                
-                            </Col>
-                            
+                                    </div>                                    
+                                </div>                                                              
+                            </Col>                           
                         ))
                     )
                 }
@@ -135,8 +132,7 @@ export function ProfileView({ movies }) {
         )          
     }
     
-
-    
+ 
     // Functions needed to open and close the modal (below) to delete a user 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -166,25 +162,41 @@ export function ProfileView({ movies }) {
 
     return (
         <div>
-            <Container className="form-element">
-                
+            <Container className="form-element">               
             <h1>{username}'s Account</h1>
             <Form>
                 <Form.Group className="mb-3" controlId="username">
                     <Form.Label>Username:</Form.Label>
-                    <Form.Control onChange={(e) => setUsername(e.target.value)} value={username} type="text" placeholder="username" />
+                    <Form.Control 
+                        onChange={(e) => setUsername(e.target.value)} 
+                        value={username} 
+                        type="text" 
+                        placeholder="username" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email:</Form.Label>
-                    <Form.Control onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder="Enter new email" />
+                    <Form.Control 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        value={email} 
+                        type="email" 
+                        placeholder="Enter new email" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="birthday">
                     <Form.Label>Birthday:</Form.Label>
-                    <Form.Control onChange={(e) => setBirthday(e.target.value)} value={birthday} type="date" placeholder="birthday" />
+                    <Form.Control 
+                        //onChange={(e) => setBirthday(e.target.value)} 
+                        value={birthday} 
+                        type="date" 
+                        disabled="true"
+                        placeholder="birthday" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="password">
                     <Form.Label>Password:</Form.Label>
-                    <Form.Control onChange={(e) => setPassword(e.target.value)} type="password" value={password} placeholder="Password" />
+                    <Form.Control 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        type="password" 
+                        value={password} 
+                        placeholder="Password" />
                 </Form.Group>
 
                 <Button variant="warning" onClick={updateUser}>
@@ -213,7 +225,14 @@ export function ProfileView({ movies }) {
     )
 }
 
-LoginView.PropTypes = {
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired
+/*  -- specifyPropTypes: -- */
+ProfileView.propTypes = {
+    user: PropTypes.shape({
+        username: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        birthday: PropTypes.string.isRequired,
+        favoriteMovies: PropTypes.array.isRequired
+    })
 }
+

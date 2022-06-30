@@ -22,7 +22,6 @@ export class MovieView extends React.Component {
         })
         .then((response) => {
           console.log(response.data)
-          alert(`The movie was successfully added to your list.`)
         })
         .catch(error => console.error(error))
     }

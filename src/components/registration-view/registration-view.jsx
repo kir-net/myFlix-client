@@ -23,15 +23,15 @@
             if (!username) {
                 setValues({...values, usernameErr: 'Username required'});
                 isReq = false;
-            } else if (username.length < 2) {
-                setValues({...values, usernameErr: 'Username must be at least 2 characters long'});
+            } else if (username.length < 5) {
+                setValues({...values, usernameErr: 'Username must be at least 5 characters long'});
                 isReq= false;
             }
             if (!password) {
                 setValues({...values, passwordErr: 'Password required'});
                 isReq = false;
-            } else if (password.length < 6) {
-                setValues({...values, passwordErr: 'Password must be at least 6 characters long'});
+            } else if (password.match(/[^0-9a-z]/i)) {
+                setValues({...values, passwordErr: 'Password may only contain letters and digits'});
                 isReq= false;
             }
             if (!email) {
@@ -94,7 +94,7 @@
                     </Form.Group>
                     <Row className="mt-4 justify-content-start">
                         <Col sm="10" md="8" lg="6">
-                        <Button  variant="warning" type="submit" onClick={handleSubmit}>Register</Button>
+                            <Button variant="warning" type="submit" onClick={handleSubmit}>Register</Button>
                         </Col>
                 </Row>
                 </Form>

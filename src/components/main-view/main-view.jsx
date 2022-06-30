@@ -1,35 +1,36 @@
-import   React              from 'react';
-import   axios              from 'axios';
-import { connect }          from 'react-redux';
+import   React                  from 'react';
+import   axios                  from 'axios';
+import { connect }              from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { MovieView }        from '../movie-view/movie-view';
-import { LoginView }        from '../login-view/login-view';
-import { RegistrationView } from '../registration-view/registration-view';
-import { Menubar }          from '../navbar/navbar';
-import { DirectorView }     from '../director-view/director-view';
-import { GenreView }        from '../genre-view/genre-view';
-import { ProfileView }      from '../profile-view/profile-view';
-import { Col, Row }         from 'react-bootstrap';
-import { setMovies }        from '../../actions/actions';
-import   MoviesList         from '../movies-list/movies-list';
+import { MovieView }            from '../movie-view/movie-view';
+import { LoginView }            from '../login-view/login-view';
+import { RegistrationView }     from '../registration-view/registration-view';
+import { Menubar }              from '../navbar/navbar';
+import { DirectorView }         from '../director-view/director-view';
+import { GenreView }            from '../genre-view/genre-view';
+import { ProfileView }          from '../profile-view/profile-view';
+import { Col, Row }             from 'react-bootstrap';
+import { setMovies, setUser }   from '../../actions/actions';
+import   MoviesList             from '../movies-list/movies-list';
 
 import './main-view.scss';
 
 class MainView extends React.Component {
 
-    constructor(){
+    constructor() {
         super();
-        // initial state
-        this.state = { 
+        this.state= {
+            movies: [],
             user: null
         };
     }
+
 
     getMovies(token) {
         axios.get('https://flix-db-823.herokuapp.com/movies', {
             headers: { Authorization: `Bearer ${token}`}
         })
-        .then(response => {
+       .then(response => {
             // #4
             this.props.setMovies(response.data);
         })
@@ -41,37 +42,37 @@ class MainView extends React.Component {
     componentDidMount() {
         let accessToken = localStorage.getItem('token');
         if (accessToken !== null) {
+            /*
             this.setState({
                 user: localStorage.getItem('user')
             });
+            */
             this.getMovies(accessToken);
+            this.props.setUser(localStorage.getItem('user'));
         }
     }
    
     onLoggedIn(authData) {
-        /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/ 
-        console.log(authData);
-        this.setState({
-            user: authData.user.Username
-        });  
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
+        const { setUser } = this.props;
+        setUser(authData.user.Username);
         this.getMovies(authData.token);
     }
 
     onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        /*
         this.setState({
             user: null
         });
+        */
+        this.props.setUser('');
     }
   
     render() {
-        // #5 movies is extracted from this.props rather than from the this.state
-        let { movies } = this.props;
-        let { user } = this.state;
-     
+        let { user, movies } = this.props;
 
         return (
             <Router>
@@ -89,6 +90,7 @@ class MainView extends React.Component {
                         return <MoviesList movies={movies}/>;
                     }} />
 
+                    /*
                     <Route  
                         path="/login" 
                         render={() => {
@@ -96,7 +98,8 @@ class MainView extends React.Component {
                             return <Col md={8}>
                                 <LoginView onLoggedIn={(user)=>this.onLoggedIn(user)}/>
                             </Col>
-                    }} />                       
+                    }} /> 
+                    */                      
 
                     <Route  
                         path="/register" 
@@ -174,8 +177,11 @@ class MainView extends React.Component {
 
 // #7
 let mapStateToProps = state => {
-    return { movies: state.movies }
+    return { 
+        movies: state.movies,
+        user: state.user 
+    }
 }
   
 // #8
-export default connect(mapStateToProps, {setMovies} )(MainView);
+export default connect(mapStateToProps, {setMovies, setUser} )(MainView);

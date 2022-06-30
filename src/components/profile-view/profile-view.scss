@@ -1,5 +1,5 @@
 .form-element {
-    margin-top: 60px; 
+    margin-top: 50px; 
     display: inline-block;
 }
 
@@ -20,4 +20,8 @@
 .button-rem-favs{
     margin: 0px;
     padding: 0px;
+}
+
+.button-rem-favs:active{
+    transform: scale(1.15);  
 }
