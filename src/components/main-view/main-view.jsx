@@ -19,10 +19,6 @@ class MainView extends React.Component {
 
     constructor() {
         super();
-        this.state= {
-            movies: [],
-            user: null
-        };
     }
 
 
@@ -42,11 +38,6 @@ class MainView extends React.Component {
     componentDidMount() {
         let accessToken = localStorage.getItem('token');
         if (accessToken !== null) {
-            /*
-            this.setState({
-                user: localStorage.getItem('user')
-            });
-            */
             this.getMovies(accessToken);
             this.props.setUser(localStorage.getItem('user'));
         }
@@ -63,11 +54,6 @@ class MainView extends React.Component {
     onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        /*
-        this.setState({
-            user: null
-        });
-        */
         this.props.setUser('');
     }
   
@@ -76,7 +62,6 @@ class MainView extends React.Component {
 
         return (
             <Router>
-
                 <Menubar user={user} />
                 
                 <Row className="main-view justify-content-md-center">
