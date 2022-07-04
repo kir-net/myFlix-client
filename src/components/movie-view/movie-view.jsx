@@ -1,37 +1,66 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
-
-import { Link } from 'react-router-dom';
-import {Card, Button} from 'react-bootstrap';
-
+import {Button, Card, Container, Row, Col} from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './movie-view.scss';
 
-/*MovieView: display details about a movie clicked by user*/
 export class MovieView extends React.Component {
+    removeFromFavorite = (event) => {
+        event.preventDefault()
 
-    // Add Favorite movie 
-    addToFavs(movieId) {
-        const currentUser = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
+        console.log('removing from favorites: ', this.props.movie, this.props.user)
+    
+        const username = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
+        console.log('remove auth', token)
+    
         axios
-        .post(`https://flix-db-823.herokuapp.com/users/${currentUser}/movies/${movieId}`, 
-        {},
+        .delete(
+        `https://flix-db-823.herokuapp.com/users/${username}/movies/${this.props.movie._id}`,
         {
-          headers: { Authorization: `Bearer ${token}`}
+            headers: { Authorization:`Bearer ${token}`}
+        }
+        )
+        .then(() => {
+        alert(`${this.props.movie.Title} was removed from your favorites list`);
         })
-        .then((response) => {
-          console.log(response.data)
-        })
-        .catch(error => console.error(error))
+        .catch((err) => {
+        console.log(err);
+      })
     }
 
-    render() {
-        const { movie, onBackClick } = this.props;
+    addFavorite = (event) => {
+        event.preventDefault()
 
-        
+        console.log('adding to favorites: ', this.props.movie, this.props.user)
+    
+        const username = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
+        console.log('add auth: ', token);
+    
+        axios
+        .post(
+        `https://flix-db-823.herokuapp.com/users/${username}/movies/${this.props.movie._id}`,
+        {},
+        {
+            headers: { Authorization: `Bearer ${token}` }
+        }
+        )
+        .then(() => {
+        alert(`${this.props.movie.Title} was added to your favorites list`);
+        })
+        .catch((err) => {
+        console.log(err);
+        });
+    }
+
+    render () {
+        if (!this.props?.user || !this.props.movie) return <div />
+        const { movie } = this.props;
+        const isMovieAFavorite = this.props.user.FavoriteMovies.includes(this.props.movie._id);
+        console.log('single movie view: ', movie)
+
         return (
-        
             <Card className="indiv-view  movie-view">
             <Card.Img className="indiv-img" variant="top" src={movie.ImagePath}  />
             <Card.Header>
@@ -57,31 +86,6 @@ export class MovieView extends React.Component {
                                    
             </Card.Body>           
             </Card>
-       
         );
-        
     }
 }
-
-/*  -- specify how MovieView's props should look: -- */
-MovieView.propTypes = {
-    movie:  PropTypes.shape({
-                Title:              PropTypes.string.isRequired,
-                Description:        PropTypes.string.isRequired,
-                Genre: PropTypes.shape({
-                    Name:           PropTypes.string.isRequired,
-                    Description:    PropTypes.string.isRequired
-                }).isRequired,
-                Director: PropTypes.shape({
-                    Name:           PropTypes.string.isRequired,
-                    Bio:            PropTypes.string.isRequired, 
-                    Birth:          PropTypes.string.isRequired,
-                    Death:          PropTypes.string
-                }).isRequired,
-                Actors:             PropTypes.arrayOf(PropTypes.string).isRequired,
-                ImagePath:          PropTypes.string.isRequired,
-                Featured:           PropTypes.bool.isRequired
-            }).isRequired,
-    onBackClick: PropTypes.func.isRequired
-};
-

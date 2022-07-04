@@ -136,7 +136,17 @@
 }
 
 .my-flix {
-  color: #4682b4;
+  color: #044099;
+}
+
+.cards {
+  height: 620px;
+  margin: 30px 5px;
+}
+
+.cards-img {
+  height: 300px;
+  object-fit: contain;
 }
 
 /*# sourceMappingURL=index.2b25e0b4.css.map */

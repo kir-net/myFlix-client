@@ -1,39 +1,49 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import {Form, Button, Card, Container, Col, Row, CardGroup} from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
 import './login-view.scss';
 
 export function LoginView(props) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    // Declare hook for each input
-    const [usernameErr, setUsernameErr] = useState('');
-    const [passwordErr, setPasswordErr] = useState('');
-    
+    const [ username, setUsername ] = useState('');
+    const [ password, setPassword ] = useState('');
 
-    // Validate user inputs
+    const [ usernameErr, setUsernameErr ] = useState('');
+    const [ passwordErr, setPasswordErr ] = useState('');
+
     const validate = () => {
         let isReq = true;
-        if (!username) {
-            setUsernameErr('Username Required');
+        if(!username){
+            setUsernameErr('Username required');
             isReq = false;
-        } 
-        if (!password) {
+        } else if(username.length < 5){
+            setUsernameErr('Username must be at least 5 characters long');
+            isReq = false;
+        }
+      
+        if(!password){
             setPasswordErr('Password Required');
             isReq = false;
-        } 
-        return isReq; 
+        } else if(password.length < 6){
+            setPasswordErr('Password must be at least 6 characters long');
+            isReq = false;
+        }
+
+        return isReq;
     }
 
+    //Requests server for authentication
+    //then calls props.onLoggedIn(username)
     const handleSubmit = (e) => {
         e.preventDefault();
         const isReq = validate();
-        if (isReq) {
-            /* Send a request to the server for authentication */
+
+        if(isReq) {
             axios.post('https://flix-db-823.herokuapp.com/login', {
                 Username: username,
                 Password: password
@@ -44,31 +54,68 @@ export function LoginView(props) {
             })
             .catch(e => {
                 console.log('no such user')
-                alert(`Wrong username or password. Please try again.`)
             });
         }
     };
 
     return (
-        <Form className="login-form">
-            <Form.Group className="mb-4" controlId="formUsername">
-                <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
-                {/* code added here to display validation error */}
-                {usernameErr && <p>{usernameErr}</p>}
-            </Form.Group>
+        <Container id='login-view-container'>
+            <Row>
+                <Col>
+                    <CardGroup>
+                        <Card>
+                            <Card.Title id='login-view-card-title'>
+                                Welcome to myFlix!
+                            </Card.Title>
+                            <Card.Body>
+                                <Form>
+                                    <Form.Group controlId="formUsername">
+                                        <Form.Label>Username: </Form.Label>
+                                        <Form.Control 
+                                            type="text" 
+                                            value={username}
+                                            onChange={e => setUsername(e.target.value)}
+                                            placeholder="Enter your username" />
+                                            {usernameErr && <p>{usernameErr}</p>}
+                                    </Form.Group>
 
-            <Form.Group className="mb-5" controlId="formPassword">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-                {/* code added here to display validation error */}
-                {passwordErr && <p>{passwordErr}</p>}
-            </Form.Group>
-            <Button variant="warning" type="submit" onClick={handleSubmit}>
-                Log In
-            </Button>
-        </Form>
-    );
+                                    <Form.Group controlId="formPassword">
+                                        <Form.Label>Password: </Form.Label>
+                                        <Form.Control 
+                                            type="password" 
+                                            onChange={e => setPassword(e.target.value)}
+                                            placeholder="Enter your username"
+                                        />
+                                        {passwordErr && <p>{passwordErr}</p>}
+                                    </Form.Group>
+                                    <br></br>
+                                    <Button 
+                                        id='login-view-submit-button'
+                                        variant="primary" 
+                                        type="submit" 
+                                        onClick={handleSubmit}>Submit
+                                    </Button>
+                                </Form>
+                            </Card.Body>
+                            
+                            <Link to={`/register`}>
+                                <Button variant="link">Sign-Up Here</Button>
+                            </Link>
+                            
+                        </Card>
+                    </CardGroup>
+                </Col>
+            </Row>
+        </Container>
+    )
+}
+
+LoginView.propTypes = {
+    user: PropTypes.shape({
+        Username: PropTypes.string.isRequired,
+        Password: PropTypes.string.isRequired
+    }),
+    onLoggedIn: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -78,13 +125,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { setUser })(LoginView);
-
-
-/*  -- specifyPropTypes: -- */
-LoginView.propTypes = {
-    user: PropTypes.shape({
-        username: PropTypes.string.isRequired,
-        password: PropTypes.string.isRequired
-    }),
-    onLoggedIn: PropTypes.func.isRequired
-}
