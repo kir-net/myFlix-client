@@ -31,7 +31,7 @@ export class DirectorView extends React.Component {
         </Container>
     )
 
-    if (director?.Death!==undefined) return (
+    if (director.Death!==undefined) return (
         <Container className="director-view">
             return <Row>
             <Col className="left-col">Director: </Col>
