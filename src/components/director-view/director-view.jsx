@@ -35,7 +35,7 @@ export class DirectorView extends React.Component {
         <Container className="director-view">
             return <Row>
             <Col className="left-col">Director: </Col>
-            <Col className="right-col">{director?.Name + ' (' + director?.Birth + '-' +  director.Death + ')'}</Col>
+            <Col className="right-col">{director?.Name + ' (' + director?.Birth + '-' +  director?.Death + ')'}</Col>
             </Row>
             <Row className="mt-3">
             <Col className="left-col">Bio: </Col>

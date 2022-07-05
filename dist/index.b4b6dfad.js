@@ -42407,7 +42407,7 @@ class DirectorView extends (0, _reactDefault.default).Component {
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                             className: "right-col",
-                            children: director?.Name + " (" + director?.Birth + "-" + director.Death + ")"
+                            children: director?.Name + " (" + director?.Birth + "-" + director?.Death + ")"
                         }, void 0, false, {
                             fileName: "src/components/director-view/director-view.jsx",
                             lineNumber: 38,
