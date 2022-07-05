@@ -75,6 +75,10 @@
   padding: 5rem 0;
 }
 
+.reg-button {
+  margin-top: 15px;
+}
+
 .director-view {
   text-align: justify;
 }

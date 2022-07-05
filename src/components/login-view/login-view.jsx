@@ -59,54 +59,24 @@ export function LoginView(props) {
     };
 
     return (
-        <Container id='login-view-container'>
-            <Row>
-                <Col>
-                    <CardGroup>
-                        <Card>
-                            <Card.Title id='login-view-card-title'>
-                                Welcome to myFlix!
-                            </Card.Title>
-                            <Card.Body>
-                                <Form>
-                                    <Form.Group controlId="formUsername">
-                                        <Form.Label>Username: </Form.Label>
-                                        <Form.Control 
-                                            type="text" 
-                                            value={username}
-                                            onChange={e => setUsername(e.target.value)}
-                                            placeholder="Enter your username" />
-                                            {usernameErr && <p>{usernameErr}</p>}
-                                    </Form.Group>
+        <Form className="login-form">
+            <Form.Group className="mb-4" controlId="formUsername">
+                <Form.Label>Username:</Form.Label>
+                <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+                {/* code added here to display validation error */}
+                {usernameErr && <p>{usernameErr}</p>}
+            </Form.Group>
 
-                                    <Form.Group controlId="formPassword">
-                                        <Form.Label>Password: </Form.Label>
-                                        <Form.Control 
-                                            type="password" 
-                                            onChange={e => setPassword(e.target.value)}
-                                            placeholder="Enter your username"
-                                        />
-                                        {passwordErr && <p>{passwordErr}</p>}
-                                    </Form.Group>
-                                    <br></br>
-                                    <Button 
-                                        id='login-view-submit-button'
-                                        variant="primary" 
-                                        type="submit" 
-                                        onClick={handleSubmit}>Submit
-                                    </Button>
-                                </Form>
-                            </Card.Body>
-                            
-                            <Link to={`/register`}>
-                                <Button variant="link">Sign-Up Here</Button>
-                            </Link>
-                            
-                        </Card>
-                    </CardGroup>
-                </Col>
-            </Row>
-        </Container>
+            <Form.Group className="mb-5" controlId="formPassword">
+                <Form.Label>Password:</Form.Label>
+                <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                {/* code added here to display validation error */}
+                {passwordErr && <p>{passwordErr}</p>}
+            </Form.Group>
+            <Button variant="warning" type="submit" onClick={handleSubmit}>
+                Log In
+            </Button>
+        </Form>
     )
 }
 

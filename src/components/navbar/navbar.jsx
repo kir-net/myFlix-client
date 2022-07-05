@@ -7,7 +7,6 @@ import { setUser } from '../../actions/actions';
 import './navbar.scss';
 
 export function MenuBar({user}) {
-
     const onLoggedOut = () => {
         localStorage.clear();
         window.open("/", "_self");
@@ -27,42 +26,23 @@ export function MenuBar({user}) {
     return (
         <Navbar className="main-nav" sticky="top" bg="dark" expand="sm" variant="dark">
             <Container>
-            <Navbar.Brand 
-                className="navbar-logo"
-                href="/"> myFlix
-            </Navbar.Brand>
-                <Navbar.Toggle 
-                    aria-controls="responsive-navbar-nav"/>
+                <Navbar.Brand className="navbar-logo" href="/">myFlix</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ml-auto">
-
-                        {isAuth() && (
-                            <Nav.Link 
-                                href={`/users/${user}`}>{user}
-                            </Nav.Link>
-                        )}
-
-                        {isAuth() && (
-                            <Button 
-                                variant="link" 
-                                onClick={()=>{onLoggedOut()}}>Logout
-                            </Button>
-                        )}  
-
-                        {!isAuth() && (
-                            <Nav.Link 
-                                href={"/login"} >Login
-                            </Nav.Link>
-                        )}
-
-                        {!isAuth() && (
-                            <Nav.Link 
-                                href={"/register"} >Register
-                            </Nav.Link>
-                        )}
-
+                    {isAuth() && (
+                        <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
+                    )}
+                    {isAuth() && (
+                        <Button variant="link" onClick={() => { onLoggedOut() }}>Logout</Button>
+                    )}
+                    {!isAuth() && (
+                        <Nav.Link href="/">Login</Nav.Link>
+                    )}
+                    {!isAuth() && (
+                        <Nav.Link href="/register">Register</Nav.Link>
+                    )}
                     </Nav>
-
                 </Navbar.Collapse>
             </Container>
         </Navbar>
