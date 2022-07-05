@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card} from 'react-bootstrap';
+import {Card, Row, Col} from 'react-bootstrap';
 
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ export class MovieCard extends React.Component {
         const { movie } = this.props;
         console.log(movie);
         return (
-            <Card className="cards">
+            <Card className="cards"  >
                 <Link to={`/movies/${movie._id}`}>
                     <Card.Img className='cards-img' variant="top" src={movie.ImagePath} />
                 </Link>

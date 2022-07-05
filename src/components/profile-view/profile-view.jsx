@@ -3,6 +3,7 @@ import {Button, Card, Container, Row, Col, FormControl, FormGroup, Form} from 'r
 import axios from 'axios';
 import { remFavMovie } from '../../actions/actions';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 
 import "./profile-view.scss";
 
@@ -93,7 +94,6 @@ class ProfileView extends React.Component {
           .then((res) => {
             this.setState({ FavoriteMovies: res?.data?.FavoriteMovies });
             this.props.remFavMovie(res?.data)
-            alert(`${movie.Title} was removed from your favorites list`);
           })
           .catch((err) => {
             console.log(err);
@@ -150,7 +150,7 @@ class ProfileView extends React.Component {
                 <Col>
                     <Card id="update-profile-card">
                         <Card.Body>
-                            <Card.Title>Your Profile</Card.Title>
+                            <Card.Title>My account</Card.Title>
                             <Form
                                 onSubmit={(e) => {
                                     this.updateUser(e)
@@ -185,7 +185,7 @@ class ProfileView extends React.Component {
                                     variant="primary"
                                     type="submit"
                                     onClick={this.updateUser}>
-                                        Update User Info
+                                        Update Info
                                 </Button>
 
                                 <Button 
@@ -202,9 +202,11 @@ class ProfileView extends React.Component {
                 </Col>
             </Row>
             
+
+
             {/* Fav Movies */}
             
-            <Card >
+            <Card className="new-part">
                 <Card.Body>
                     <Card.Title>My Favorite Movies</Card.Title>
                     {!FavoriteMovies || FavoriteMovies.length === 0 && (
@@ -214,15 +216,15 @@ class ProfileView extends React.Component {
                         {FavoriteMovies?.length > 0 && movies.map((movie) => {
                             if (movie._id === FavoriteMovies.find((fav) => fav === movie._id)) {
                                 return (
-                                    <Card key={movie._id}  className="card-fav-movie mx-auto">
-                                        <Card.Img                                                 
-                                            className="cards-img"
-                                            variant="top"
-                                            src={movie.ImagePath}
-                                        />
-                                        <Card.Header className="cards-title">
-                                            {movie.Title}
-                                        </Card.Header>
+                                    <Card key={movie._id}  className=" col-md-3 card-fav-movie">
+                                        <Link to={`/movies/${movie._id}`} className="text-link">
+                                            <Card.Img                                                 
+                                                className="fav-movie"
+                                                variant="top"
+                                                src={movie.ImagePath}
+                                            />
+                                        </Link>
+                                        
                                         <Card.Body>
                                             <div className="div-button-rem-favs">
                                                 <Button 

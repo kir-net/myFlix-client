@@ -116,15 +116,14 @@ class MainView extends React.Component {
                 <MenuBar user={user} />
                 <Container>
                 <Row className="main-view justify-content-md-center">
-                    {/* <Routes> */}
-                        {/* Login */}
+                  
                     <Route exact path="/" render={() => {
                         if (!user && !localStorage.getItem('user')) return <Col>
                             <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                         </Col>
                         return <MoviesList movies={movies}/>
                     }} />
-                        {/* RegistrationView */}
+                   
                     <Route path="/register" render={() => {
                         if(user) {
                             <Redirect to="/" />
@@ -135,7 +134,7 @@ class MainView extends React.Component {
                             </Col>
                         )
                     }} />
-                        {/* MovieView */}
+            
                     <Route path="/movies/:movieId" render={({ match, history }) => {
                         if (!user) return <Col>
                             <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -145,7 +144,7 @@ class MainView extends React.Component {
                             <MovieView user={this.state?.fullUser} movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
                         </Col>
                     }} />
-                        {/* DirectorView */}
+              
                     <Route path="/directors/:name" render={( { match, history }) => {
 
                         if (!user) return <Col><LoginView onLoggedIn={user => this.onLoggedIn(user)} /></Col>
@@ -156,7 +155,7 @@ class MainView extends React.Component {
                             </Col>
                         )
                     }} />
-                        {/* GenreView */}
+                 
                     <Route path="/genres/:name" render={({ match, history }) => {
                         if (!user) return <Col>
                             <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -165,7 +164,7 @@ class MainView extends React.Component {
                             <GenreView genre={movies.find(m => m.Genre.Name === match.params.name)?.Genre} onBackClick={() => history.goBack()} />
                         </Col>
                     }} />
-                        {/* ProfileView */}
+                 
                     <Route path={`/users/${user}`} render={({ history }) => {
                         return <Col>
                             <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />

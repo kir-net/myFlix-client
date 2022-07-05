@@ -1,6 +1,6 @@
 .form-element {
     margin-top: 50px; 
-    display: inline-block;
+    //display: inline-block;
 }
 
 .button-rem-favs:active{
@@ -8,13 +8,17 @@
 }
 
 .card-fav-movie{         
-    height: 430px;
-    margin: 30px 5px;
+    height: 270px;
+    margin: 10px 0;
 }
 
-.cards-img {   
-    height: 300px;
+.fav-movie {   
+    height: 190px;
     object-fit: contain;
+}
+
+.fav-movie:hover{
+    transform: scale(1.12);  
 }
 
 .card-fav-movie:hover{
@@ -22,15 +26,6 @@
     background-color: rgb(250, 251, 255);  
 }
 
-.cards-img:hover{
-    box-shadow: 0 0 5px 1px rgb(127, 127, 128);
-}
-
-.cards-title {
-    height: 50px;
-    font-weight:700;
-    text-align: left; 
-}
 
 .div-button-rem-favs{
     visibility: visible;
@@ -44,6 +39,10 @@
 .button-rem-favs{
     margin: 0px;
     padding: 0px;
+}
+
+.new-part{
+    margin-top: 50px;
 }
 
 

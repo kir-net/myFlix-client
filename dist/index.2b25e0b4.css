@@ -3,7 +3,7 @@
 }
 
 .cards {
-  height: 620px;
+  height: 540px;
   margin: 30px 5px;
 }
 
@@ -35,9 +35,27 @@
   font-weight: 500;
 }
 
-@media (min-width: 990px) {
+@media (max-width: 575.98px) {
   .cards {
-    height: 550px;
+    height: 480px;
+  }
+}
+
+@media (min-width: 575.99px) and (max-width: 767.99px) {
+  .cards {
+    height: 540px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .cards {
+    height: 580px;
+  }
+}
+
+@media (min-width: 991.99px) {
+  .cards {
+    height: 530px;
   }
 }
 
@@ -113,7 +131,6 @@
 
 .form-element {
   margin-top: 50px;
-  display: inline-block;
 }
 
 .button-rem-favs:active {
@@ -121,28 +138,22 @@
 }
 
 .card-fav-movie {
-  height: 430px;
-  margin: 30px 5px;
+  height: 270px;
+  margin: 10px 0;
 }
 
-.cards-img {
-  height: 300px;
+.fav-movie {
+  height: 190px;
   object-fit: contain;
+}
+
+.fav-movie:hover {
+  transform: scale(1.12);
 }
 
 .card-fav-movie:hover {
   background-color: #fafbff;
   box-shadow: 0 0 1px 1px #dcdcdc;
-}
-
-.cards-img:hover {
-  box-shadow: 0 0 5px 1px #7f7f80;
-}
-
-.cards-title {
-  height: 50px;
-  text-align: left;
-  font-weight: 700;
 }
 
 .div-button-rem-favs {
@@ -157,6 +168,10 @@
 .button-rem-favs {
   margin: 0;
   padding: 0;
+}
+
+.new-part {
+  margin-top: 50px;
 }
 
 .my-flix {
