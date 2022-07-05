@@ -116,6 +116,35 @@
   display: inline-block;
 }
 
+.button-rem-favs:active {
+  transform: scale(1.15);
+}
+
+.card-fav-movie {
+  height: 430px;
+  margin: 30px 5px;
+}
+
+.cards-img {
+  height: 300px;
+  object-fit: contain;
+}
+
+.card-fav-movie:hover {
+  background-color: #fafbff;
+  box-shadow: 0 0 1px 1px #dcdcdc;
+}
+
+.cards-img:hover {
+  box-shadow: 0 0 5px 1px #7f7f80;
+}
+
+.cards-title {
+  height: 50px;
+  text-align: left;
+  font-weight: 700;
+}
+
 .div-button-rem-favs {
   visibility: visible;
   width: 100%;
@@ -125,32 +154,13 @@
   padding: 0;
 }
 
-.movie-card:hover {
-  background-color: #fafbff;
-  box-shadow: 0 0 1px 1px #dcdcdc;
-}
-
 .button-rem-favs {
   margin: 0;
   padding: 0;
 }
 
-.button-rem-favs:active {
-  transform: scale(1.15);
-}
-
 .my-flix {
   color: #044099;
-}
-
-.cards {
-  height: 620px;
-  margin: 30px 5px;
-}
-
-.cards-img {
-  height: 300px;
-  object-fit: contain;
 }
 
 /*# sourceMappingURL=index.2b25e0b4.css.map */

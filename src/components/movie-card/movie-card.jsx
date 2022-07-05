@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, Card, CardGroup, Container, Row, Col} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 
 import { Link } from "react-router-dom";
 
@@ -12,13 +12,12 @@ export class MovieCard extends React.Component {
         const { movie } = this.props;
         console.log(movie);
         return (
-            <Card className='my-flix cards'>
+            <Card className="cards">
                 <Link to={`/movies/${movie._id}`}>
                     <Card.Img className='cards-img' variant="top" src={movie.ImagePath} />
                 </Link>
                 <Card.Header>
-                    <Card.Title className='cards-title'>{movie.Title}</Card.Title>
-                                                                                                          
+                    <Card.Title className='cards-title'>{movie.Title}</Card.Title>                                                                                                         
                 </Card.Header>
                 <Card.Body>                          
                     <Card.Text className="cards-description">

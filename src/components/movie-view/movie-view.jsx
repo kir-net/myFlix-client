@@ -57,7 +57,7 @@ export class MovieView extends React.Component {
                     className="button button-add-favs"
                     variant="outline-success"
                     title="Add to My Favorites"                      
-                    onClick={(event) => this.addToFavs(event) }>Add to favorites//&#x2764;                      
+                    onClick={(event) => this.addToFavs(event) }> &#x2764;                      
                 </Button> 
                                    
             </Card.Body>           

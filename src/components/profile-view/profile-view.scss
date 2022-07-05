@@ -3,6 +3,35 @@
     display: inline-block;
 }
 
+.button-rem-favs:active{
+    transform: scale(1.15);  
+}
+
+.card-fav-movie{         
+    height: 430px;
+    margin: 30px 5px;
+}
+
+.cards-img {   
+    height: 300px;
+    object-fit: contain;
+}
+
+.card-fav-movie:hover{
+    box-shadow: 0 0 1px 1px rgb(220, 220, 220);
+    background-color: rgb(250, 251, 255);  
+}
+
+.cards-img:hover{
+    box-shadow: 0 0 5px 1px rgb(127, 127, 128);
+}
+
+.cards-title {
+    height: 50px;
+    font-weight:700;
+    text-align: left; 
+}
+
 .div-button-rem-favs{
     visibility: visible;
     width: 100%;
@@ -12,16 +41,9 @@
     padding: 0px;
 }
 
-.movie-card:hover{
-    box-shadow: 0 0 1px 1px rgb(220, 220, 220);
-    background-color: rgb(250, 251, 255);  
-}
-
 .button-rem-favs{
     margin: 0px;
     padding: 0px;
 }
 
-.button-rem-favs:active{
-    transform: scale(1.15);  
-}
+

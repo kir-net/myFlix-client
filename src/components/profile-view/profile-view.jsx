@@ -142,11 +142,10 @@ class ProfileView extends React.Component {
 
     render() {
         const { movies } = this.props;
-        const { FavoriteMovies, Username, Password, Email, Birthday } = this.state;
+        const { FavoriteMovies, Username, Email } = this.state;
 
         return (
-            <Container>
-            {/* Movie Card */}
+            <Container className="form-element">
             <Row>
                 <Col>
                     <Card id="update-profile-card">
@@ -156,20 +155,18 @@ class ProfileView extends React.Component {
                                 onSubmit={(e) => {
                                     this.updateUser(e)
                                 }} >
-                                {/* Username Form */}
-                                <FormGroup>
+                                <FormGroup  className="mb-3" controlId="username">
                                     <Form.Label>Username</Form.Label>
                                     <FormControl
                                         type="text"
                                         name="username"
-                                        placeholder="Enter a new username"
+                                        placeholder="username"
                                         value={Username}
                                         onChange={(e) => this.setUsername(e.target.value || '')}
                                         required />
                                 </FormGroup>
 
-                                {/* Email Form */}
-                                <FormGroup>
+                                <FormGroup className="mb-3" controlId="email">
                                     <Form.Label>Email</Form.Label>
                                     <FormControl
                                         type="email"
@@ -180,21 +177,11 @@ class ProfileView extends React.Component {
                                         required />
                                 </FormGroup>
 
-                                {/* Birthday Form */}
-                                <FormGroup>
-                                    <Form.Label>Birthday</Form.Label>
-                                    <FormControl
-                                        type="date"
-                                        name="birthday"
-                                        placeholder="Enter a new birthday"
-                                        value={this.getBirthdayValue()}
-                                        onChange={(e) => this.setBirthday(e.target.value)}
-                                        required />
-                                </FormGroup>
                                 <br></br>
 
                                 <Button 
                                     id="update-user-button"
+                                    className="button"
                                     variant="primary"
                                     type="submit"
                                     onClick={this.updateUser}>
@@ -203,6 +190,7 @@ class ProfileView extends React.Component {
 
                                 <Button 
                                     id="delete-profile-button"
+                                    className="button"
                                     variant="secondary"
                                     onClick={() => this.removeUser()}>
                                         Delete Profile
@@ -215,45 +203,46 @@ class ProfileView extends React.Component {
             </Row>
             
             {/* Fav Movies */}
-            <Row>
-                <Col id="fav-movie-card-col">
-                    <Card className="cards">
-                        <Card.Body>
-                            <Card.Title id="fav-movie-card-title">Your Favorite Movies</Card.Title>
-                            {!FavoriteMovies || FavoriteMovies.length === 0 && (
-                                <div>You haven't added any movies to your favorites list</div>
-                            )}
-                            <Row>
-                                {FavoriteMovies?.length > 0 && movies.map((movie) => {
-                                    if (movie._id === FavoriteMovies.find((fav) => fav === movie._id)) {
-                                        return (
-                                            <Card id="fav-movie-card-card" key={movie._id}  className="mx-auto">
-                                                <Card.Img
-                                                    id="fav-movie-img"                                                    
-                                                    className="cards-img favorite-movie-image"
-                                                    variant="top"
-                                                    src={movie.ImagePath}
-                                                />
-                                                <Card.Header className="movie-title">
-                                                    {movie.Title}
-                                                </Card.Header>
-                                                <Card.Body>
-                                                   
-                                                    <Button value={movie._id} onClick={(e) => this.removeFromFavorite(e, movie)}>
-                                                        Remove from Favorites
-                                                    </Button>
-
-                                                </Card.Body>
-                                            </Card>
-                                            );
-                                        }
-                                    })}
-                                </Row>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+            
+            <Card >
+                <Card.Body>
+                    <Card.Title>My Favorite Movies</Card.Title>
+                    {!FavoriteMovies || FavoriteMovies.length === 0 && (
+                        <div>Favorites list is empty.</div>
+                    )}
+                    <Row>
+                        {FavoriteMovies?.length > 0 && movies.map((movie) => {
+                            if (movie._id === FavoriteMovies.find((fav) => fav === movie._id)) {
+                                return (
+                                    <Card key={movie._id}  className="card-fav-movie mx-auto">
+                                        <Card.Img                                                 
+                                            className="cards-img"
+                                            variant="top"
+                                            src={movie.ImagePath}
+                                        />
+                                        <Card.Header className="cards-title">
+                                            {movie.Title}
+                                        </Card.Header>
+                                        <Card.Body>
+                                            <div className="div-button-rem-favs">
+                                                <Button 
+                                                    className="button-rem-favs"
+                                                    value={movie._id} 
+                                                    onClick={(e) => this.removeFromFavorite(e, movie)}>
+                                                    Delete
+                                                </Button>
+                                            </div>                                                                                                       
+                                        </Card.Body>
+                                    </Card>
+                                    );
+                                }
+                            })}
+                        </Row>
+                </Card.Body>
+            </Card>
+                
         </Container>
+        
         )
     }
 }
