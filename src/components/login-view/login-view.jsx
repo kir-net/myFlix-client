@@ -53,6 +53,7 @@ export function LoginView(props) {
                 props.onLoggedIn(data);
             })
             .catch(e => {
+                alert("That did not work. Please try again.")
                 console.log('no such user')
             });
         }
