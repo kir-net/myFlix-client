@@ -59,24 +59,26 @@ export function LoginView(props) {
     };
 
     return (
-        <Form className="login-form bg-col">
-            <Form.Group className="mb-4" controlId="formUsername">
-                <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
-                {/* code added here to display validation error */}
-                {usernameErr && <p>{usernameErr}</p>}
-            </Form.Group>
+        <Container className="login-form">
+            <Form className="login-form bg-col lining">
+                <Form.Group className="mb-4" controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+                    {/* code added here to display validation error */}
+                    {usernameErr && <p>{usernameErr}</p>}
+                </Form.Group>
 
-            <Form.Group className="mb-5" controlId="formPassword">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-                {/* code added here to display validation error */}
-                {passwordErr && <p>{passwordErr}</p>}
-            </Form.Group>
-            <Button type="submit" onClick={handleSubmit}>
-                Log In
-            </Button>
-        </Form>
+                <Form.Group className="mb-5" controlId="formPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+                    {/* code added here to display validation error */}
+                    {passwordErr && <p>{passwordErr}</p>}
+                </Form.Group>
+                <Button type="submit" onClick={handleSubmit}>
+                    Log In
+                </Button>
+            </Form>
+        </Container>
     )
 }
 
