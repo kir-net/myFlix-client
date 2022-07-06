@@ -12,14 +12,14 @@ export class MovieCard extends React.Component {
         const { movie } = this.props;
         console.log(movie);
         return (
-            <Card className="cards"  >
+            <Card className="cards bg-col"  >
                 <Link to={`/movies/${movie._id}`}>
-                    <Card.Img className='cards-img' variant="top" src={movie.ImagePath} />
+                    <Card.Img className='cards-img bg-col' variant="top" src={movie.ImagePath} />
                 </Link>
-                <Card.Header>
+                <Card.Header >
                     <Card.Title className='cards-title'>{movie.Title}</Card.Title>                                                                                                         
                 </Card.Header>
-                <Card.Body>                          
+                <Card.Body className="bg-col">                          
                     <Card.Text className="cards-description">
                         {movie.Description.split(' ').slice(0, 14).join(' ') + ' '}
                         <Link to={`/movies/${movie._id}`} className="text-link">

@@ -24,7 +24,7 @@ export class DirectorView extends React.Component {
                     <Button 
                         className="d-block mt-3" 
                         onClick={() => { onBackClick(null); }} 
-                        variant="warning">Back
+                        >Back
                     </Button>
                 </Col>
             </Row>          

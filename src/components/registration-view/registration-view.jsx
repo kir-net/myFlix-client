@@ -69,8 +69,8 @@ export function RegistrationView() {
     return (
         <Container id="registration-form">
             <Row className="justify-content-center">
-            <Col sm="10" md="8" lg="6">
-                <Form className="registration-form">
+            <Col>
+                <Form className="registration-form bg-col">
                     <Form.Group className="mb-4" controlId="formUsername">
                         <Form.Label>Username:</Form.Label>
                         <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username" required/>
@@ -92,7 +92,7 @@ export function RegistrationView() {
                     </Form.Group>
                     <Row className="mt-4 justify-content-start">
                         <Col sm="10" md="8" lg="6">
-                            <Button className="reg-button" variant="warning" type="submit" onClick={handleSubmit}>Register</Button>
+                            <Button className="reg-button" type="submit" onClick={handleSubmit}>Register</Button>
                         </Col>
                 </Row>
                 </Form>

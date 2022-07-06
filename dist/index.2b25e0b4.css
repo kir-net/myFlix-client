@@ -86,11 +86,11 @@
 }
 
 .login-form {
-  padding: 5rem 0;
+  padding: 4rem 3rem;
 }
 
 .registration-form {
-  padding: 5rem 0;
+  padding: 4rem 3rem;
 }
 
 .reg-button {
@@ -176,6 +176,14 @@
 
 .my-flix {
   color: #044099;
+}
+
+.bg-col {
+  background-color: #2c35e80d;
+}
+
+.lining {
+  box-shadow: 0 0 3px 1px #4b4b4a4d;
 }
 
 /*# sourceMappingURL=index.2b25e0b4.css.map */

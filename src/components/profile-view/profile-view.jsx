@@ -148,9 +148,9 @@ class ProfileView extends React.Component {
             <Container className="form-element">
             <Row>
                 <Col>
-                    <Card id="update-profile-card">
-                        <Card.Body>
-                            <Card.Title>My account</Card.Title>
+                    <Card>
+                        <Card.Body className="bg-col lining">
+                            <Card.Title>My Account</Card.Title>
                             <Form
                                 onSubmit={(e) => {
                                     this.updateUser(e)
@@ -207,7 +207,7 @@ class ProfileView extends React.Component {
             {/* Fav Movies */}
             
             <Card className="new-part">
-                <Card.Body>
+                <Card.Body className="bg-col lining">
                     <Card.Title>My Favorite Movies</Card.Title>
                     {!FavoriteMovies || FavoriteMovies.length === 0 && (
                         <div>Favorites list is empty.</div>

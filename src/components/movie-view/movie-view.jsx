@@ -33,11 +33,11 @@ export class MovieView extends React.Component {
 
         return (
             <Card className="indiv-view  movie-view">
-            <Card.Img className="indiv-img" variant="top" src={movie.ImagePath}  />
+            <Card.Img className="bg-col indiv-img" variant="top" src={movie.ImagePath}  />
             <Card.Header>
                 <Card.Title className="indiv-title">{movie.Title}</Card.Title>
             </Card.Header>
-            <Card.Body>            
+            <Card.Body className="bg-col">            
                 <Card.Text>{movie.Description}</Card.Text>
                 <Card.Text><strong>Director: </strong>{movie.Director.Name}</Card.Text>
                 <Card.Text><strong>Starring: </strong>{movie.Actors.join(', ')}</Card.Text>
@@ -47,16 +47,17 @@ export class MovieView extends React.Component {
                                     </Col>
                                 }} />
                 <Link to={`/directors/${movie.Director.Name}`}>
-                    <Button className="button" variant="outline-primary">Director</Button>
+                    <Button className="button" variant="secondary">Director</Button>
                 </Link>
                 <Link to={`/genres/${movie.Genre.Name}`}>
-                    <Button className="button" variant="outline-primary">Genre</Button>
+                    <Button className="button" variant="secondary">Genre</Button>
                 </Link>
                 <Button className="button" onClick={() => { onBackClick(null); }} >Back</Button>               
                 <Button 
                     className="button button-add-favs"
-                    variant="outline-success"
-                    title="Add to My Favorites"                      
+                    variant="outline-secondary"
+                    title="Add to My Favorites" 
+                                       
                     onClick={(event) => this.addToFavs(event) }> &#x2764;                      
                 </Button> 
                                    

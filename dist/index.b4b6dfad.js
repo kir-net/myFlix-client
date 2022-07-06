@@ -27050,7 +27050,7 @@ class MainView extends (0, _reactDefault.default).Component {
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
                                 lineNumber: 120,
-                                columnNumber: 21
+                                columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                                 path: "/register",
@@ -27067,7 +27067,7 @@ class MainView extends (0, _reactDefault.default).Component {
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
                                 lineNumber: 127,
-                                columnNumber: 21
+                                columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                                 path: "/movies/:movieId",
@@ -27089,7 +27089,7 @@ class MainView extends (0, _reactDefault.default).Component {
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
                                 lineNumber: 138,
-                                columnNumber: 21
+                                columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                                 path: "/directors/:name",
@@ -27110,7 +27110,7 @@ class MainView extends (0, _reactDefault.default).Component {
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
                                 lineNumber: 148,
-                                columnNumber: 21
+                                columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                                 path: "/genres/:name",
@@ -27131,7 +27131,7 @@ class MainView extends (0, _reactDefault.default).Component {
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
                                 lineNumber: 159,
-                                columnNumber: 21
+                                columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                                 path: `/users/${user1}`,
@@ -27147,13 +27147,13 @@ class MainView extends (0, _reactDefault.default).Component {
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
                                 lineNumber: 168,
-                                columnNumber: 21
+                                columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/main-view/main-view.jsx",
                         lineNumber: 118,
-                        columnNumber: 17
+                        columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
@@ -36814,12 +36814,12 @@ class MovieCard extends (0, _reactDefault.default).Component {
         const { movie  } = this.props;
         console.log(movie);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
-            className: "cards",
+            className: "cards bg-col",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                     to: `/movies/${movie._id}`,
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
-                        className: "cards-img",
+                        className: "cards-img bg-col",
                         variant: "top",
                         src: movie.ImagePath
                     }, void 0, false, {
@@ -36847,6 +36847,7 @@ class MovieCard extends (0, _reactDefault.default).Component {
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                    className: "bg-col",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                         className: "cards-description",
                         children: [
@@ -41620,7 +41621,7 @@ class MovieView extends (0, _reactDefault.default).Component {
             className: "indiv-view movie-view",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
-                    className: "indiv-img",
+                    className: "bg-col indiv-img",
                     variant: "top",
                     src: movie.ImagePath
                 }, void 0, false, {
@@ -41643,6 +41644,7 @@ class MovieView extends (0, _reactDefault.default).Component {
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                    className: "bg-col",
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                             children: movie.Description
@@ -41703,7 +41705,7 @@ class MovieView extends (0, _reactDefault.default).Component {
                             to: `/directors/${movie.Director.Name}`,
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                 className: "button",
-                                variant: "outline-primary",
+                                variant: "secondary",
                                 children: "Director"
                             }, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
@@ -41719,7 +41721,7 @@ class MovieView extends (0, _reactDefault.default).Component {
                             to: `/genres/${movie.Genre.Name}`,
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                 className: "button",
-                                variant: "outline-primary",
+                                variant: "secondary",
                                 children: "Genre"
                             }, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
@@ -41744,7 +41746,7 @@ class MovieView extends (0, _reactDefault.default).Component {
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                             className: "button button-add-favs",
-                            variant: "outline-success",
+                            variant: "outline-secondary",
                             title: "Add to My Favorites",
                             onClick: (event)=>this.addToFavs(event),
                             children: " \u2764"
@@ -41836,7 +41838,7 @@ function LoginView(props) {
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
-        className: "login-form",
+        className: "login-form bg-col",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
                 className: "mb-4",
@@ -41907,7 +41909,6 @@ function LoginView(props) {
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                variant: "warning",
                 type: "submit",
                 onClick: handleSubmit,
                 children: "Log In"
@@ -42046,11 +42047,8 @@ function RegistrationView() {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
             className: "justify-content-center",
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                sm: "10",
-                md: "8",
-                lg: "6",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
-                    className: "registration-form",
+                    className: "registration-form bg-col",
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
                             className: "mb-4",
@@ -42192,7 +42190,6 @@ function RegistrationView() {
                                 lg: "6",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                     className: "reg-button",
-                                    variant: "warning",
                                     type: "submit",
                                     onClick: handleSubmit,
                                     children: "Register"
@@ -42339,7 +42336,6 @@ class DirectorView extends (0, _reactDefault.default).Component {
                                 onClick: ()=>{
                                     onBackClick(null);
                                 },
-                                variant: "warning",
                                 children: "Back"
                             }, void 0, false, {
                                 fileName: "src/components/director-view/director-view.jsx",
@@ -42552,7 +42548,6 @@ class GenreView extends (0, _reactDefault.default).Component {
                                 onClick: ()=>{
                                     onBackClick(null);
                                 },
-                                variant: "warning",
                                 children: "Back"
                             }, void 0, false, {
                                 fileName: "src/components/genre-view/genre-view.jsx",
@@ -42726,11 +42721,11 @@ class ProfileView extends (0, _reactDefault.default).Component {
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
-                            id: "update-profile-card",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                                className: "bg-col lining",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
-                                        children: "My account"
+                                        children: "My Account"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view.jsx",
                                         lineNumber: 153,
@@ -42857,6 +42852,7 @@ class ProfileView extends (0, _reactDefault.default).Component {
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
                     className: "new-part",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                        className: "bg-col lining",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
                                 children: "My Favorite Movies"

@@ -22,8 +22,8 @@ export class GenreView extends React.Component {
                     <Col className="right-col">
                         <Button 
                             className="d-block mt-3" 
-                            onClick={() => { onBackClick(null); }} 
-                            variant="warning">Back
+                            onClick={() => { onBackClick(null); }}                             
+                            >Back
                         </Button>
                     </Col>
                 </Row>            
