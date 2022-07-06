@@ -42437,7 +42437,6 @@ class DirectorView extends (0, _reactDefault.default).Component {
                                 onClick: ()=>{
                                     onBackClick(null);
                                 },
-                                variant: "warning",
                                 children: "Back"
                             }, void 0, false, {
                                 fileName: "src/components/director-view/director-view.jsx",
