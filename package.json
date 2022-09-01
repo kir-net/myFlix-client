@@ -4,7 +4,7 @@
   "description": "",
   "default": "src/index.html",
   "source": "src/index.html",
-  "main": "src/index.html",
+  "main": "src/index.js",
   "scripts": {
     "start": "parcel",
     "watch": "parcel watch",
