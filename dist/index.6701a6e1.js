@@ -28655,6 +28655,7 @@ class MovieView extends _reactDefault.default.Component {
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
                     className: "bg-col indiv-img",
+                    crossOrigin: "anonymous",
                     variant: "top",
                     src: movie.ImagePath,
                     __source: {
@@ -45919,6 +45920,7 @@ class MovieCard extends _reactDefault.default.Component {
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
                         className: "cards-img bg-col",
+                        crossOrigin: "anonymous",
                         variant: "top",
                         src: movie.ImagePath,
                         __source: {
@@ -47379,6 +47381,7 @@ class ProfileView extends _reactDefault.default.Component {
                                                 __self: this,
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
                                                     className: "fav-movie",
+                                                    crossOrigin: "anonymous",
                                                     variant: "top",
                                                     src: movie.ImagePath,
                                                     __source: {
@@ -47391,14 +47394,14 @@ class ProfileView extends _reactDefault.default.Component {
                                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Body, {
                                                 __source: {
                                                     fileName: "src/components/profile-view/profile-view.jsx",
-                                                    lineNumber: 228
+                                                    lineNumber: 229
                                                 },
                                                 __self: this,
                                                 children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
                                                     className: "div-button-rem-favs",
                                                     __source: {
                                                         fileName: "src/components/profile-view/profile-view.jsx",
-                                                        lineNumber: 229
+                                                        lineNumber: 230
                                                     },
                                                     __self: this,
                                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
@@ -47408,7 +47411,7 @@ class ProfileView extends _reactDefault.default.Component {
                                                         ,
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
-                                                            lineNumber: 230
+                                                            lineNumber: 231
                                                         },
                                                         __self: this,
                                                         children: "Delete"

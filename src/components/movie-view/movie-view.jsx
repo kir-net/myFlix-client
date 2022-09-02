@@ -33,7 +33,7 @@ export class MovieView extends React.Component {
 
         return (
             <Card className="indiv-view  movie-view">
-            <Card.Img className="bg-col indiv-img" variant="top" src={movie.ImagePath}  />
+            <Card.Img className="bg-col indiv-img" crossOrigin="anonymous" variant="top" src={movie.ImagePath}  />
             <Card.Header>
                 <Card.Title className="indiv-title">{movie.Title}</Card.Title>
             </Card.Header>

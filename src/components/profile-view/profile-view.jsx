@@ -220,6 +220,7 @@ class ProfileView extends React.Component {
                                         <Link to={`/movies/${movie._id}`} className="text-link">
                                             <Card.Img                                                 
                                                 className="fav-movie"
+                                                crossOrigin="anonymous"
                                                 variant="top"
                                                 src={movie.ImagePath}
                                             />
